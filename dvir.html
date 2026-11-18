@@ -81,7 +81,7 @@
       <input type="text" id="odometer" placeholder="Odometer">
     </div>
   </div>
-  <p class="required-note">* = required field</p>
+  <p class="required-note">* = required field &mdash; Checklist per FMCSA 49 CFR 396 Appendix G</p>
   <div class="tabs">
     <button class="tab pre active" onclick="switchTab('pre')">Pre</button>
     <button class="tab post" onclick="switchTab('post')">Post</button>
@@ -89,15 +89,27 @@
   <div class="oos-banner" id="oosBanner">OUT OF SERVICE &mdash; Brake Line Leak</div>
   <div class="content">
     <div class="checklist" id="checklist">
-      <div class="checklist-item"><span class="label">Brakes</span><span class="check fail" onclick="toggleCheck(this)">&#10007;</span></div>
-      <div class="checklist-item"><span class="label">Lights</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Tires</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Steering</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Horn</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Wipers</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Mirrors</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Brakes (Service)</span><span class="check fail" onclick="toggleCheck(this)">&#10007;</span></div>
+      <div class="checklist-item"><span class="label">Parking Brake</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Trailer Brake Connections</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Brake Hoses & Lines</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
       <div class="checklist-item"><span class="label">Coupling Devices</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Exhaust System</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Fuel System</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Lights</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Cargo Securement</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Steering</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Suspension</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Frame</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Tires</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Wheels & Rims</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Windshield Glazing</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Wipers</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
       <div class="checklist-item"><span class="label">Emergency Equipment</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Horn</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Mirrors</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Seat Belts</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item"><span class="label">Driveline</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
     </div>
     <div class="status-row">
       <button class="status-btn green" onclick="setStatus('green')">No Defects Found</button>
@@ -115,7 +127,7 @@
   </div>
   <button class="pdf-btn" onclick="generatePDF()">Download PDF</button>
   <a class="back-link" href="index.html">&larr; Back to Bid Day Live</a>
-  <div class="footer">FMCSA requires retention of DVIRs for a minimum of 90 days (49 CFR 396.11). Data retained 90 days.</div>
+  <div class="footer">FMCSA requires retention of DVIRs for a minimum of 90 days (49 CFR 396.11). Data retained 90 days. Checklist per 49 CFR 396 Appendix G.</div>
   <script>
     var currentTab = 'pre';
     var isOOS = true;
@@ -179,7 +191,7 @@
       doc.text('Date: ' + new Date().toLocaleDateString(), 20, 88);
       var y = 100;
       doc.setFontSize(13);
-      doc.text('DOT Checklist:', 20, y);
+      doc.text('DOT Checklist (FMCSA 49 CFR 396 Appendix G):', 20, y);
       y += 8;
       doc.setFontSize(11);
       var items = [];
