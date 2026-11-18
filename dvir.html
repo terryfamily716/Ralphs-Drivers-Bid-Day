@@ -116,7 +116,9 @@
     <div class="status-indicator" id="statusIndicator">NO DEFECTS FOUND</div>
     <div class="body-damage">
       <h3>Body Damage Photos</h3>
-      <div class="photo-area">Tap to add photos of body damage<br>(as many as needed)</div>
+      <div class="photo-area" id="photoArea" onclick="document.getElementById('photoInput').click()">Tap to add photos of body damage<br>(as many as needed)</div>
+      <input type="file" id="photoInput" accept="image/*" multiple style="display:none" onchange="handlePhotos(this)">
+      <div class="photo-thumbs" id="photoThumbs"></div>
     </div>
     <div class="signatures">
       <div class="sig-line">Driver Signature</div>
@@ -130,6 +132,7 @@
   <script>
     var currentTab = "pre";
     var isOOS = false;
+    var photos = [];
 
     function toggleCheck(item) {
       var el = item.querySelector(".check");
@@ -174,11 +177,42 @@
       currentTab = tab;
       document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
       document.querySelector(".tab." + tab).classList.add("active");
-      if (tab === "post" && isOOS) {
-        document.getElementById("oosBanner").classList.add("show");
-      } else {
-        document.getElementById("oosBanner").classList.remove("show");
+      document.querySelectorAll(".checklist-item .check").forEach(function(el) {
+        el.classList.remove("pass", "fail");
+        el.innerHTML = "&nbsp;";
+      });
+      syncStatusFromChecks();
+    }
+
+    function handlePhotos(input) {
+      var files = input.files;
+      for (var i = 0; i < files.length; i++) {
+        (function(file) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var dataUrl = e.target.result;
+            photos.push(dataUrl);
+            var thumb = document.createElement("div");
+            thumb.className = "photo-thumb";
+            var img = document.createElement("img");
+            img.src = dataUrl;
+            img.style.maxHeight = "80px";
+            var removeBtn = document.createElement("button");
+            removeBtn.className = "remove-btn";
+            removeBtn.textContent = "X";
+            removeBtn.onclick = function() {
+              var idx = photos.indexOf(dataUrl);
+              if (idx !== -1) photos.splice(idx, 1);
+              thumb.remove();
+            };
+            thumb.appendChild(img);
+            thumb.appendChild(removeBtn);
+            document.getElementById("photoThumbs").appendChild(thumb);
+          };
+          reader.readAsDataURL(file);
+        })(files[i]);
       }
+      input.value = "";
     }
 
     function generatePDF() {
@@ -235,6 +269,21 @@
       y += 6;
       doc.text("Status: " + (isOOS ? "DEFECTS FOUND - OUT OF SERVICE" : "NO DEFECTS FOUND"), 20, y);
       y += 14;
+      if (photos.length > 0) {
+        doc.setFontSize(13);
+        doc.text("Body Damage Photos:", 20, y);
+        y += 10;
+        doc.setFontSize(11);
+        for (var p = 0; p < photos.length; p++) {
+          if (y > 250) {
+            doc.addPage();
+            y = 20;
+          }
+          doc.addImage(photos[p], "JPEG", 20, y, 170, 0);
+          y += 95;
+        }
+        y += 6;
+      }
       doc.text("Driver Signature: _______________________", 20, y); y += 10;
       doc.text("Mechanic Signature: _______________________", 20, y); y += 10;
       doc.text("Supervisor Signature: _______________________", 20, y); y += 14;
