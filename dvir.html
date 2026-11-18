@@ -52,7 +52,7 @@
     .back-link:active { background: #1a1a1a; }
     .pdf-btn { display: block; width: calc(100% - 32px); margin: 0 16px 16px; padding: 14px; background: #60a5fa; color: #0d0d0d; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; flex-shrink: 0; }
     .pdf-btn:active { opacity: 0.8; }
-    .hidden { display: none; }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -128,8 +128,16 @@
     var isOOS = true;
 
     function startDVIR() {
-      document.getElementById('infoScreen').classList.add('hidden);
-      document.getElementById('dvirScreen').classList.add('show);
+      var firstName = document.getElementById('firstName').value.trim();
+      var lastName = document.getElementById('lastName').value.trim();
+      var tractorNum = document.getElementById('tractorNum').value.trim();
+      var trailerNum = document.getElementById('trailerNum').value.trim();
+      if (!firstName || !lastName || !tractorNum || !trailerNum) {
+        alert('Please fill in first name, last name, tractor number, and trailer number.');
+        return;
+      }
+      document.getElementById('infoScreen').style.display = 'none';
+      document.getElementById('dvirScreen').style.display = 'flex';
     }
 
     function switchTab(tab) {
