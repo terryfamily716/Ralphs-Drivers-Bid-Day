@@ -11,6 +11,17 @@
     header { background: #0d0d0d; padding: 10px 16px; border-bottom: 1px solid #333; text-align: center; flex-shrink: 0; }
     header h1 { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
     header p { font-size: 12px; color: #4ade80; }
+    .info-screen { flex: 1; padding: 20px 16px; overflow-y: auto; }
+    .info-screen h2 { font-size: 16px; margin-bottom: 16px; color: #ccc; }
+    .field { margin-bottom: 14px; }
+    .field label { display: block; font-size: 12px; color: #888; margin-bottom: 4px; }
+    .field input { width: 100%; padding: 12px; background: #262626; border: 1px solid #444; border-radius: 8px; color: #fff; font-size: 15px; }
+    .field input:focus { outline: none; border-color: #60a5fa; }
+    .field input.locked { color: #4ade80; background: #1f1f1f; }
+    .start-btn { display: block; width: 100%; padding: 16px; background: #4ade80; color: #0d0d0d; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+    .start-btn:active { opacity: 0.8; }
+    .dvir-screen { display: none; flex: 1; flex-direction: column; min-height: 0; }
+    .dvir-screen.show { display: flex; }
     .tabs { display: flex; flex-shrink: 0; }
     .tab { flex: 1; text-align: center; padding: 12px; font-size: 16px; font-weight: 700; cursor: pointer; border: none; background: #0d0d0d; color: #888; }
     .tab.pre { border-bottom: 3px solid #4ade80; }
@@ -49,43 +60,77 @@
     <h1>Ralph's Drivers DVIR</h1>
     <p>Digital inspection reports for trucking fleets</p>
   </header>
-  <div class="tabs">
-    <button class="tab pre active" onclick="switchTab('pre')">Pre</button>
-    <button class="tab post" onclick="switchTab('post')">Post</button>
+
+  <div class="info-screen" id="infoScreen">
+    <h2>Driver Information</h2>
+    <div class="field">
+      <label>First Name</label>
+      <input type="text" id="firstName" placeholder="Enter first name">
+    </div>
+    <div class="field">
+      <label>Last Name</label>
+      <input type="text" id="lastName" placeholder="Enter last name">
+    </div>
+    <div class="field">
+      <label>Company</label>
+      <input type="text" value="Ralph's Grocery" class="locked" readonly>
+    </div>
+    <div class="field">
+      <label>Tractor Number</label>
+      <input type="text" id="tractorNum" placeholder="Enter tractor number">
+    </div>
+    <div class="field">
+      <label>Trailer Number</label>
+      <input type="text" id="trailerNum" placeholder="Enter trailer number">
+    </div>
+    <button class="start-btn" onclick="startDVIR()">Start DVIR</button>
   </div>
-  <div class="oos-banner" id="oosBanner">OUT OF SERVICE &mdash; Brake Line Leak</div>
-  <div class="content">
-    <div class="checklist" id="checklist">
-      <div class="checklist-item"><span class="label">Brakes</span><span class="check fail">&#10007;</span></div>
-      <div class="checklist-item"><span class="label">Lights</span><span class="check pass">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Tires</span><span class="check pass">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Steering</span><span class="check pass">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Horn</span><span class="check pass">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Wipers</span><span class="check pass">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Mirrors</span><span class="check pass">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Coupling Devices</span><span class="check pass">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Emergency Equipment</span><span class="check pass">&#10003;</span></div>
+
+  <div class="dvir-screen" id="dvirScreen">
+    <div class="tabs">
+      <button class="tab pre active" onclick="switchTab('pre')">Pre</button>
+      <button class="tab post" onclick="switchTab('post')">Post</button>
     </div>
-    <div class="status-row">
-      <button class="status-btn green" onclick="setStatus('green')">No Defects Found</button>
-      <button class="status-btn red" onclick="setStatus('red')">Defects Found</button>
+    <div class="oos-banner" id="oosBanner">OUT OF SERVICE &mdash; Brake Line Leak</div>
+    <div class="content">
+      <div class="checklist" id="checklist">
+        <div class="checklist-item"><span class="label">Brakes</span><span class="check fail">&#10007;</span></div>
+        <div class="checklist-item"><span class="label">Lights</span><span class="check pass">&#10003;</span></div>
+        <div class="checklist-item"><span class="label">Tires</span><span class="check pass">&#10003;</span></div>
+        <div class="checklist-item"><span class="label">Steering</span><span class="check pass">&#10003;</span></div>
+        <div class="checklist-item"><span class="label">Horn</span><span class="check pass">&#10003;</span></div>
+        <div class="checklist-item"><span class="label">Wipers</span><span class="check pass">&#10003;</span></div>
+        <div class="checklist-item"><span class="label">Mirrors</span><span class="check pass">&#10003;</span></div>
+        <div class="checklist-item"><span class="label">Coupling Devices</span><span class="check pass">&#10003;</span></div>
+        <div class="checklist-item"><span class="label">Emergency Equipment</span><span class="check pass">&#10003;</span></div>
+      </div>
+      <div class="status-row">
+        <button class="status-btn green" onclick="setStatus('green')">No Defects Found</button>
+        <button class="status-btn red" onclick="setStatus('red')">Defects Found</button>
+      </div>
+      <div class="body-damage">
+        <h3>Body Damage Photos</h3>
+        <div class="photo-area">Tap to add photos of body damage<br>(as many as needed)</div>
+      </div>
+      <div class="signatures">
+        <div class="sig-line">Driver Signature</div>
+        <div class="sig-line">Mechanic Signature</div>
+        <div class="sig-line">Supervisor Signature</div>
+      </div>
     </div>
-    <div class="body-damage">
-      <h3>Body Damage Photos</h3>
-      <div class="photo-area">Tap to add photos of body damage<br>(as many as needed)</div>
-    </div>
-    <div class="signatures">
-      <div class="sig-line">Driver Signature</div>
-      <div class="sig-line">Mechanic Signature</div>
-      <div class="sig-line">Supervisor Signature</div>
-    </div>
+    <button class="pdf-btn" onclick="generatePDF()">Download PDF</button>
+    <a class="back-link" href="index.html">&larr; Back to Bid Day Live</a>
+    <div class="footer">FMCSA requires retention of DVIRs for a minimum of 90 days (49 CFR 396.11). Data retained 90 days.</div>
   </div>
-  <button class="pdf-btn" onclick="generatePDF()">Download PDF</button>
-  <a class="back-link" href="index.html">&larr; Back to Bid Day Live</a>
-  <div class="footer">FMCSA requires retention of DVIRs for a minimum of 90 days (49 CFR 396.11). Data retained 90 days.</div>
+
   <script>
     var currentTab = 'pre';
     var isOOS = true;
+
+    function startDVIR() {
+      document.getElementById('infoScreen').classList.add('hidden);
+      document.getElementById('dvirScreen').classList.add('show);
+    }
 
     function switchTab(tab) {
       currentTab = tab;
@@ -111,14 +156,22 @@
     function generatePDF() {
       var jsPDF = window.jspdf.jsPDF;
       var doc = new jsPDF();
+      var firstName = document.getElementById('firstName').value || '';
+      var lastName = document.getElementById('lastName').value || '';
+      var tractorNum = document.getElementById('tractorNum').value || '';
+      var trailerNum = document.getElementById('trailerNum').value || '';
       doc.setFontSize(18);
       doc.text('Ralph\'s Drivers DVIR', 105, 20, { align: 'center' });
       doc.setFontSize(12);
       doc.text('Digital inspection reports for trucking fleets', 105, 28, { align: 'center' });
       doc.setFontSize(11);
-      doc.text('Inspection Type: ' + (currentTab === 'pre' ? 'Pre-Trip' : 'Post-Trip'), 20, 40);
-      doc.text('Date: ' + new Date().toLocaleDateString(), 20, 48);
-      var y = 60;
+      doc.text('Driver: ' + firstName + ' ' + lastName, 20, 40);
+      doc.text('Company: Ralph\'s Grocery', 20, 48);
+      doc.text('Tractor: ' + tractorNum, 20, 56);
+      doc.text('Trailer: ' + trailerNum, 20, 64);
+      doc.text('Inspection Type: ' + (currentTab === 'pre' ? 'Pre-Trip' : 'Post-Trip'), 20, 72);
+      doc.text('Date: ' + new Date().toLocaleDateString(), 20, 80);
+      var y = 92;
       doc.setFontSize(13);
       doc.text('DOT Checklist:', 20, y);
       y += 8;
