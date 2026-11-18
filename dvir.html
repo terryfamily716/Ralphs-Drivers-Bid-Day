@@ -129,115 +129,115 @@
   <a class="back-link" href="index.html">&larr; Back to Bid Day Live</a>
   <div class="footer">FMCSA requires retention of DVIRs for a minimum of 90 days (49 CFR 396.11). Data retained 90 days. Checklist per 49 CFR 396 Appendix G.</div>
   <script>
-    var currentTab = 'pre';
+    var currentTab = "pre";
     var isOOS = true;
 
     function toggleCheck(item) {
-      var el = item.querySelector('.check);
-      if (el.classList.contains('pass')) {
-        el.classList.remove('pass);
-        el.classList.add('fail);
-        el.innerHTML = '&#10007;';
+      var el = item.querySelector(".check");
+      if (el.classList.contains("pass")) {
+        el.classList.remove("pass");
+        el.classList.add("fail");
+        el.innerHTML = "&#10007;";
       } else {
-        el.classList.remove('fail);
-        el.classList.add('pass);
-        el.innerHTML = '&#10003;';
+        el.classList.remove("fail");
+        el.classList.add("pass");
+        el.innerHTML = "&#10003;";
       }
       syncStatusFromChecks();
     }
 
     function syncStatusFromChecks() {
       var anyFail = false;
-      document.querySelectorAll('.checklist-item .check').forEach(function(el) {
-        if (el.classList.contains('fail')) anyFail = true;
+      document.querySelectorAll(".checklist-item .check").forEach(function(el) {
+        if (el.classList.contains("fail")) anyFail = true;
       });
       isOOS = anyFail;
-      if (anyFail && currentTab === 'post') {
-        document.getElementById('oosBanner').classList.add('show);
+      if (anyFail && currentTab === "post") {
+        document.getElementById("oosBanner").classList.add("show");
       } else {
-        document.getElementById('oosBanner').classList.remove('show);
+        document.getElementById("oosBanner").classList.remove("show");
       }
     }
 
     function switchTab(tab) {
       currentTab = tab;
-      document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
-      document.querySelector('.tab.' + tab).classList.add('active);
-      if (tab === 'post' && isOOS) {
-        document.getElementById('oosBanner').classList.add('show);
+      document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
+      document.querySelector(".tab." + tab).classList.add("active");
+      if (tab === "post" && isOOS) {
+        document.getElementById("oosBanner").classList.add("show");
       } else {
-        document.getElementById('oosBanner').classList.remove('show);
+        document.getElementById("oosBanner").classList.remove("show");
       }
     }
 
     function setStatus(status) {
-      if (status === 'green') {
+      if (status === "green") {
         isOOS = false;
-        document.querySelectorAll('.checklist-item .check').forEach(function(el) {
-          el.classList.remove('fail);
-          el.classList.add('pass);
-          el.innerHTML = '&#10003;';
+        document.querySelectorAll(".checklist-item .check").forEach(function(el) {
+          el.classList.remove("fail");
+          el.classList.add("pass");
+          el.innerHTML = "&#10003;";
         });
-        document.getElementById('oosBanner').classList.remove('show);
+        document.getElementById("oosBanner").classList.remove("show");
       } else {
         isOOS = true;
-        if (currentTab === 'post') document.getElementById('oosBanner').classList.add('show);
+        if (currentTab === "post") document.getElementById("oosBanner").classList.add("show");
       }
     }
 
     function generatePDF() {
-      var firstName = document.getElementById('firstName').value || '';
-      var lastName = document.getElementById('lastName').value || '';
-      var tractorNum = document.getElementById('tractorNum').value || '';
-      var trailerNum = document.getElementById('trailerNum').value || '';
-      var odometer = document.getElementById('odometer').value || '';
+      var firstName = document.getElementById("firstName").value || "";
+      var lastName = document.getElementById("lastName").value || "";
+      var tractorNum = document.getElementById("tractorNum").value || "";
+      var trailerNum = document.getElementById("trailerNum").value || "";
+      var odometer = document.getElementById("odometer").value || "";
       if (!firstName || !lastName || !tractorNum || !odometer) {
-        alert('Please fill in first name, last name, tractor number, and odometer reading.');
+        alert("Please fill in first name, last name, tractor number, and odometer reading.");
         return;
       }
       var jsPDF = window.jspdf.jsPDF;
       var doc = new jsPDF();
       doc.setFontSize(18);
-      doc.text('Ralph\'s Drivers DVIR', 105, 20, { align: 'center' });
+      doc.text("Ralph's Drivers DVIR", 105, 20, { align: "center" });
       doc.setFontSize(12);
-      doc.text('Digital inspection reports for trucking fleets', 105, 28, { align: 'center' });
+      doc.text("Digital inspection reports for trucking fleets", 105, 28, { align: "center" });
       doc.setFontSize(11);
-      doc.text('Driver: ' + firstName + ' ' + lastName, 20, 40);
-      doc.text('Company: Ralph\'s Grocery', 20, 48);
-      doc.text('Tractor: ' + tractorNum, 20, 56);
-      doc.text('Trailer: ' + trailerNum, 20, 64);
-      doc.text('Odometer: ' + odometer, 20, 72);
-      doc.text('Inspection Type: ' + (currentTab === 'pre' ? 'Pre-Trip' : 'Post-Trip'), 20, 80);
-      doc.text('Date: ' + new Date().toLocaleDateString(), 20, 88);
+      doc.text("Driver: " + firstName + " " + lastName, 20, 40);
+      doc.text("Company: Ralph's Grocery", 20, 48);
+      doc.text("Tractor: " + tractorNum, 20, 56);
+      doc.text("Trailer: " + trailerNum, 20, 64);
+      doc.text("Odometer: " + odometer, 20, 72);
+      doc.text("Inspection Type: " + (currentTab === "pre" ? "Pre-Trip" : "Post-Trip"), 20, 80);
+      doc.text("Date: " + new Date().toLocaleDateString(), 20, 88);
       var y = 100;
       doc.setFontSize(13);
-      doc.text('DOT Checklist (FMCSA 49 CFR 396 Appendix G):', 20, y);
+      doc.text("DOT Checklist (FMCSA 49 CFR 396 Appendix G):", 20, y);
       y += 8;
       doc.setFontSize(11);
       var items = [];
-      document.querySelectorAll('.checklist-item').forEach(function(item) {
-        var label = item.querySelector('.label').textContent;
-        var check = item.querySelector('.check);
-        var status = check.classList.contains('fail') ? 'OUT OF SERVICE' : 'OK';
-        items.push(label + ' - ' + status);
+      document.querySelectorAll(".checklist-item").forEach(function(item) {
+        var label = item.querySelector(".label").textContent;
+        var check = item.querySelector(".check");
+        var status = check.classList.contains("fail") ? "OUT OF SERVICE" : "OK";
+        items.push(label + " - " + status);
       });
       items.forEach(function(item) {
-        if (item.indexOf('OUT OF SERVICE') !== -1) doc.setTextColor(220, 0, 0);
+        if (item.indexOf("OUT OF SERVICE") !== -1) doc.setTextColor(220, 0, 0);
         else doc.setTextColor(0, 0, 0);
         doc.text(item, 25, y);
         y += 7;
       });
       doc.setTextColor(0, 0, 0);
       y += 6;
-      doc.text('Status: ' + (isOOS ? 'DEFECTS FOUND - OUT OF SERVICE' : 'NO DEFECTS FOUND'), 20, y);
+      doc.text("Status: " + (isOOS ? "DEFECTS FOUND - OUT OF SERVICE" : "NO DEFECTS FOUND"), 20, y);
       y += 14;
-      doc.text('Driver Signature: _______________________', 20, y); y += 10;
-      doc.text('Mechanic Signature: _______________________', 20, y); y += 10;
-      doc.text('Supervisor Signature: _______________________', 20, y); y += 14;
+      doc.text("Driver Signature: _______________________", 20, y); y += 10;
+      doc.text("Mechanic Signature: _______________________", 20, y); y += 10;
+      doc.text("Supervisor Signature: _______________________", 20, y); y += 14;
       doc.setFontSize(9);
       doc.setTextColor(100, 100, 100);
-      doc.text('FMCSA requires retention of DVIRs for a minimum of 90 days (49 CFR 396.11).', 20, y);
-      doc.save('DVIR-' + new Date().toISOString().slice(0,10) + '.pdf);
+      doc.text("FMCSA requires retention of DVIRs for a minimum of 90 days (49 CFR 396.11).", 20, y);
+      doc.save("DVIR-" + new Date().toISOString().slice(0,10) + ".pdf");
     }
   </script>
 </body>
