@@ -28,9 +28,9 @@
     .oos-banner.show { display: block; }
     .content { flex: 1; padding: 16px; overflow-y: auto; }
     .checklist { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-    .checklist-item { flex: 1 1 calc(50% - 6px); min-width: 140px; display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #262626; border-radius: 8px; font-size: 14px; }
+    .checklist-item { flex: 1 1 calc(50% - 6px); min-width: 140px; display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #262626; border-radius: 8px; font-size: 14px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
     .checklist-item .label { flex: 1; }
-    .check { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; cursor: pointer; }
+    .check { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; pointer-events: none; }
     .check.pass { background: #4ade80; color: #0d0d0d; }
     .check.fail { background: #ef4444; color: #fff; }
     .status-row { display: flex; gap: 10px; margin-bottom: 20px; }
@@ -89,27 +89,27 @@
   <div class="oos-banner" id="oosBanner">OUT OF SERVICE &mdash; Brake Line Leak</div>
   <div class="content">
     <div class="checklist" id="checklist">
-      <div class="checklist-item"><span class="label">Brakes (Service)</span><span class="check fail" onclick="toggleCheck(this)">&#10007;</span></div>
-      <div class="checklist-item"><span class="label">Parking Brake</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Trailer Brake Connections</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Brake Hoses & Lines</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Coupling Devices</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Exhaust System</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Fuel System</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Lights</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Cargo Securement</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Steering</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Suspension</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Frame</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Tires</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Wheels & Rims</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Windshield Glazing</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Wipers</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Emergency Equipment</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Horn</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Mirrors</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Seat Belts</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
-      <div class="checklist-item"><span class="label">Driveline</span><span class="check pass" onclick="toggleCheck(this)">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Brakes (Service)</span><span class="check fail">&#10007;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Parking Brake</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Trailer Brake Connections</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Brake Hoses & Lines</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Coupling Devices</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Exhaust System</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Fuel System</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Lights</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Cargo Securement</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Steering</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Suspension</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Frame</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Tires</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Wheels & Rims</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Windshield Glazing</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Wipers</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Emergency Equipment</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Horn</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Mirrors</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Seat Belts</span><span class="check pass">&#10003;</span></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><span class="label">Driveline</span><span class="check pass">&#10003;</span></div>
     </div>
     <div class="status-row">
       <button class="status-btn green" onclick="setStatus('green')">No Defects Found</button>
@@ -132,7 +132,8 @@
     var currentTab = 'pre';
     var isOOS = true;
 
-    function toggleCheck(el) {
+    function toggleCheck(item) {
+      var el = item.querySelector('.check);
       if (el.classList.contains('pass')) {
         el.classList.remove('pass);
         el.classList.add('fail);
@@ -141,6 +142,20 @@
         el.classList.remove('fail);
         el.classList.add('pass);
         el.innerHTML = '&#10003;';
+      }
+      syncStatusFromChecks();
+    }
+
+    function syncStatusFromChecks() {
+      var anyFail = false;
+      document.querySelectorAll('.checklist-item .check').forEach(function(el) {
+        if (el.classList.contains('fail')) anyFail = true;
+      });
+      isOOS = anyFail;
+      if (anyFail && currentTab === 'post') {
+        document.getElementById('oosBanner').classList.add('show);
+      } else {
+        document.getElementById('oosBanner').classList.remove('show);
       }
     }
 
@@ -156,12 +171,17 @@
     }
 
     function setStatus(status) {
-      if (status === 'red') {
+      if (status === 'green') {
+        isOOS = false;
+        document.querySelectorAll('.checklist-item .check').forEach(function(el) {
+          el.classList.remove('fail);
+          el.classList.add('pass);
+          el.innerHTML = '&#10003;';
+        });
+        document.getElementById('oosBanner').classList.remove('show);
+      } else {
         isOOS = true;
         if (currentTab === 'post') document.getElementById('oosBanner').classList.add('show);
-      } else {
-        isOOS = false;
-        document.getElementById('oosBanner').classList.remove('show);
       }
     }
 
