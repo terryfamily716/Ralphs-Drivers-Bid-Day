@@ -82,8 +82,8 @@
       <input type="text" id="tractorNum" placeholder="Enter tractor number">
     </div>
     <div class="field">
-      <label>Trailer Number *</label>
-      <input type="text" id="trailerNum" placeholder="Enter trailer number">
+      <label>Trailer Number</label>
+      <input type="text" id="trailerNum" placeholder="Enter trailer number (optional if bobtailing)">
     </div>
     <div class="field">
       <label>Odometer Reading *</label>
@@ -134,17 +134,21 @@
     var isOOS = true;
 
     function startDVIR() {
-      var firstName = document.getElementById('firstName').value.trim();
-      var lastName = document.getElementById('lastName').value.trim();
-      var tractorNum = document.getElementById('tractorNum').value.trim();
-      var trailerNum = document.getElementById('trailerNum').value.trim();
-      var odometer = document.getElementById('odometer').value.trim();
-      if (!firstName || !lastName || !tractorNum || !trailerNum || !odometer) {
-        alert('Please fill in first name, last name, tractor number, trailer number, and odometer reading.');
-        return;
+      try {
+        var firstName = document.getElementById('firstName').value.trim();
+        var lastName = document.getElementById('lastName').value.trim();
+        var tractorNum = document.getElementById('tractorNum').value.trim();
+        var trailerNum = document.getElementById('trailerNum').value.trim();
+        var odometer = document.getElementById('odometer').value.trim();
+        if (!firstName || !lastName || !tractorNum || !odometer) {
+          alert('Please fill in first name, last name, tractor number, and odometer reading.');
+          return;
+        }
+        document.getElementById('infoScreen').classList.add('hidden);
+        document.getElementById('dvirScreen').classList.add('show);
+      } catch (e) {
+        alert('Error starting DVIR: ' + e.message);
       }
-      document.getElementById('infoScreen').style.display = 'none';
-      document.getElementById('dvirScreen').style.display = 'flex';
     }
 
     function switchTab(tab) {
