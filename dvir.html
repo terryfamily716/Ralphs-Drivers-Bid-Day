@@ -12,7 +12,8 @@
     header h1 { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
     header p { font-size: 12px; color: #4ade80; }
     .info-screen { flex: 1; padding: 20px 16px; overflow-y: auto; }
-    .info-screen h2 { font-size: 16px; margin-bottom: 16px; color: #ccc; }
+    .info-screen h2 { font-size: 16px; margin-bottom: 4px; color: #ccc; }
+    .required-note { font-size: 11px; color: #ef4444; margin-bottom: 16px; }
     .field { margin-bottom: 14px; }
     .field label { display: block; font-size: 12px; color: #888; margin-bottom: 4px; }
     .field input { width: 100%; padding: 12px; background: #262626; border: 1px solid #444; border-radius: 8px; color: #fff; font-size: 15px; }
@@ -63,12 +64,13 @@
 
   <div class="info-screen" id="infoScreen">
     <h2>Driver Information</h2>
+    <p class="required-note">* = required field</p>
     <div class="field">
-      <label>First Name</label>
+      <label>First Name *</label>
       <input type="text" id="firstName" placeholder="Enter first name">
     </div>
     <div class="field">
-      <label>Last Name</label>
+      <label>Last Name *</label>
       <input type="text" id="lastName" placeholder="Enter last name">
     </div>
     <div class="field">
@@ -76,11 +78,11 @@
       <input type="text" value="Ralph's Grocery" class="locked" readonly>
     </div>
     <div class="field">
-      <label>Tractor Number</label>
+      <label>Tractor Number *</label>
       <input type="text" id="tractorNum" placeholder="Enter tractor number">
     </div>
     <div class="field">
-      <label>Trailer Number</label>
+      <label>Trailer Number *</label>
       <input type="text" id="trailerNum" placeholder="Enter trailer number">
     </div>
     <button class="start-btn" onclick="startDVIR()">Start DVIR</button>
