@@ -85,6 +85,10 @@
       <label>Trailer Number *</label>
       <input type="text" id="trailerNum" placeholder="Enter trailer number">
     </div>
+    <div class="field">
+      <label>Odometer Reading *</label>
+      <input type="text" id="odometer" placeholder="Enter odometer reading">
+    </div>
     <button class="start-btn" onclick="startDVIR()">Start DVIR</button>
   </div>
 
@@ -134,8 +138,9 @@
       var lastName = document.getElementById('lastName').value.trim();
       var tractorNum = document.getElementById('tractorNum').value.trim();
       var trailerNum = document.getElementById('trailerNum').value.trim();
-      if (!firstName || !lastName || !tractorNum || !trailerNum) {
-        alert('Please fill in first name, last name, tractor number, and trailer number.');
+      var odometer = document.getElementById('odometer').value.trim();
+      if (!firstName || !lastName || !tractorNum || !trailerNum || !odometer) {
+        alert('Please fill in first name, last name, tractor number, trailer number, and odometer reading.');
         return;
       }
       document.getElementById('infoScreen').style.display = 'none';
@@ -170,6 +175,7 @@
       var lastName = document.getElementById('lastName').value || '';
       var tractorNum = document.getElementById('tractorNum').value || '';
       var trailerNum = document.getElementById('trailerNum').value || '';
+      var odometer = document.getElementById('odometer').value || '';
       doc.setFontSize(18);
       doc.text('Ralph\'s Drivers DVIR', 105, 20, { align: 'center' });
       doc.setFontSize(12);
@@ -179,9 +185,10 @@
       doc.text('Company: Ralph\'s Grocery', 20, 48);
       doc.text('Tractor: ' + tractorNum, 20, 56);
       doc.text('Trailer: ' + trailerNum, 20, 64);
-      doc.text('Inspection Type: ' + (currentTab === 'pre' ? 'Pre-Trip' : 'Post-Trip'), 20, 72);
-      doc.text('Date: ' + new Date().toLocaleDateString(), 20, 80);
-      var y = 92;
+      doc.text('Odometer: ' + odometer, 20, 72);
+      doc.text('Inspection Type: ' + (currentTab === 'pre' ? 'Pre-Trip' : 'Post-Trip'), 20, 80);
+      doc.text('Date: ' + new Date().toLocaleDateString(), 20, 88);
+      var y = 100;
       doc.setFontSize(13);
       doc.text('DOT Checklist:', 20, y);
       y += 8;
