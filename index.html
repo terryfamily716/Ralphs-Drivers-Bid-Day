@@ -10,12 +10,18 @@
     .hero { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; margin: 16px; border-radius: 12px; }
     .hero h1 { font-size: clamp(36px, 11vw, 92px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
     .hero p { font-size: clamp(20px, 6vw, 40px); color: #4ade80; font-weight: 600; }
-    .memos-link { display: block; text-align: center; padding: 22px; background: #0d0d0d; border: 4px solid #ef4444; border-radius: 12px; margin: 8px 16px; color: #facc15; text-decoration: none; font-size: 22px; font-weight: 700; }
-    .memos-link:active { background: #1a1a1a; }
-    .tabs-link { display: block; text-align: center; padding: 22px; background: #0d0d0d; border: 4px solid #ef4444; border-radius: 12px; margin: 8px 16px; color: #60a5fa; text-decoration: none; font-size: 22px; font-weight: 700; }
-    .tabs-link:active { background: #1a1a1a; }
-    .dvir-link { display: block; text-align: center; padding: 22px; background: #0d0d0d; border: 4px solid #ef4444; border-radius: 12px; margin: 8px 16px; color: #f97316; text-decoration: none; font-size: 22px; font-weight: 700; }
-    .dvir-link:active { background: #1a1a1a; }
+    .menu-wrap { position: relative; margin: 8px 16px; }
+    .menu-btn { display: block; width: 100%; text-align: center; padding: 22px; background: #0d0d0d; border: 4px solid #ef4444; border-radius: 12px; color: #fff; font-size: 22px; font-weight: 700; cursor: pointer; }
+    .menu-btn:active { background: #1a1a1a; }
+    .menu-list { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 10; background: #0d0d0d; border: 4px solid #ef4444; border-top: none; border-radius: 0 0 12px 12px; }
+    .menu-list.open { display: block; }
+    .menu-list a { display: block; text-align: center; padding: 18px; color: #fff; text-decoration: none; font-size: 20px; font-weight: 700; border-bottom: 2px solid #333; }
+    .menu-list a:last-child { border-bottom: none; }
+    .menu-list a.memos { color: #facc15; }
+    .menu-list a.tabs { color: #60a5fa; }
+    .menu-list a.dvir { color: #f97316; }
+    .menu-list a:active { background: #1a1a1a; }
+    .badge-area { margin-top: auto; padding: 16px; text-align: center; }
   </style><script data-goatcounter="https://terryfamily.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </head>
@@ -24,14 +30,20 @@
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
   </div>
-  <a class="memos-link" href="memos.html">Driver Memos &rarr;</a>
-  <a class="tabs-link" href="tabs.html">Go to Bid Day Live Tabs &rarr;</a>
-  <a class="dvir-link" href="dvir.html">Go to DVIR &rarr;</a>
+  <div class="menu-wrap">
+    <button class="menu-btn" onclick="document.querySelector('.menu-list').classList.toggle('open')">Menu &darr;</button>
+    <div class="menu-list">
+      <a class="memos" href="memos.html">Driver Memos &rarr;</a>
+      <a class="tabs" href="tabs.html">Bid Day Live Tabs &rarr;</a>
+      <a class="dvir" href="dvir.html">DVIR &rarr;</a>
+    </div>
+  </div>
+  <div class="badge-area"></div>
   <script>
 var t = setInterval(function() {
     if (window.goatcounter && window.goatcounter.visit_count) {
         clearInterval(t)
-        window.goatcounter.visit_count({append: '.dvir-link'})
+        window.goatcounter.visit_count({append: '.badge-area'})
     }
 }, 100)
 </script>
