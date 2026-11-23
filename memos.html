@@ -8,6 +8,9 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
     body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #1a1a1a; color: #fff; display: flex; flex-direction: column; }
+    .top-bar { flex-shrink: 0; display: flex; justify-content: flex-start; padding: 12px 16px; }
+    .back-link { display: inline-block; padding: 14px 24px; background: #0d0d0d; border: 3px solid #60a5fa; border-radius: 10px; color: #60a5fa; text-decoration: none; font-size: 18px; font-weight: 700; }
+    .back-link:active { background: #1a1a1a; }
     header { flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; }
     header h1 { font-size: clamp(28px, 8vw, 64px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
     header p { font-size: clamp(16px, 4vw, 28px); color: #4ade80; font-weight: 600; }
@@ -17,13 +20,11 @@
     .memo h2 { font-size: clamp(20px, 5vw, 32px); font-weight: 800; color: #ef4444; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
     .memo p { font-size: clamp(16px, 4vw, 24px); line-height: 1.5; color: #fff; font-weight: 600; }
     .memo .date { font-size: clamp(13px, 3vw, 16px); color: #888; margin-top: 12px; font-weight: 500; }
-    .back-link { display: block; text-align: center; padding: 10px 16px; background: #0d0d0d; border-top: 1px solid #333; color: #60a5fa; text-decoration: none; font-size: 13px; font-weight: 600; flex-shrink: 0; }
-    .back-link:active { background: #1a1a1a; }
     @media (orientation: landscape) {
       header { padding: 12px; }
       header h1 { font-size: clamp(32px, 8vw, 64px); }
       header p { font-size: clamp(18px, 4vw, 30px); }
-      .back-link { padding: 6px 16px; font-size: 12px; }
+      .back-link { padding: 10px 20px; font-size: 16px; }
       .memos { padding: 0 16px 8px; }
       .memo { padding: 16px; margin-bottom: 12px; }
       .memo h2 { font-size: clamp(26px, 6vw, 40px); }
@@ -33,10 +34,13 @@
   </style>
 </head>
 <body>
+  <div class="top-bar">
+    <a class="back-link" href="index.html">&larr; Back to Home</a>
+  </div>
   <header>
     <h1>Driver Memos</h1>
     <p>Important notices for Riverside drivers</p>
-    <div class="version">11.23.26 V0.02</div>
+    <div class="version">11.23.26 V0.03</div>
   </header>
   <div class="memos">
     <div class="memo">
@@ -45,6 +49,5 @@
       <div class="date">Posted November 22, 2026 at 6:00 PM</div>
     </div>
   </div>
-  <a class="back-link" href="index.html">&larr; Back to Bid Day Live</a>
 </body>
 </html>
