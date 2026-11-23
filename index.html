@@ -42,7 +42,7 @@
   <div class="hero">
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
-    <div class="version">11.23.26 V0.07</div>
+    <div class="version">11.23.26 V0.08</div>
     <div class="signin-wrap" id="signinWrap">
       <button onclick="handleSignIn()">Sign In with Google</button>
       <div class="signin-note">Create an account with your Google login to access menus, memos, tabs, and DVIR</div>
@@ -76,7 +76,7 @@
       document.getElementById("menuWrap").classList.add("visible");
       localStorage.setItem("bidday_user", JSON.stringify({ name: name, email: payload.email, signedIn: true }));
     }
-    window.onclick = function() {
+    window.onload = function() {
       var saved = localStorage.getItem("bidday_user");
       if (saved) {
         var user = JSON.parse(saved);
