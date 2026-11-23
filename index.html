@@ -49,7 +49,7 @@
     <div class="user-bar" id="userBar"></div>
   </div>
   <div class="create-profile-wrap">
-    <a class="create-profile-btn" href="profile.html">Create Profile</a>
+    <a class="create-profile-btn" href="profile.html">Create Driver Profile</a>
     <div class="create-profile-note">In order to use the menu, everybody must create a login through Google.</div>
   </div>
   <div class="menu-wrap" id="menuWrap">
@@ -61,7 +61,7 @@
     </div>
   </div>
   <div class="badge-area"></div>
-  <div class="version">11.23.26 V0.05</div>
+  <div class="version">11.23.26 V0.06</div>
   <script>
     function handleSignIn() {
       google.accounts.id.initialize({ client_id: "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com", callback: onSignIn });
@@ -76,7 +76,7 @@
       document.getElementById("menuWrap").classList.add("visible");
       localStorage.setItem("bidday_user", JSON.stringify({ name: name, email: payload.email, signedIn: true }));
     }
-    window.onload = function() {
+    window.onclick = function() {
       var saved = localStorage.getItem("bidday_user");
       if (saved) {
         var user = JSON.parse(saved);
