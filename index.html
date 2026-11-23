@@ -10,6 +10,7 @@
     .hero { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; margin: 16px; border-radius: 12px; }
     .hero h1 { font-size: clamp(36px, 11vw, 92px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
     .hero p { font-size: clamp(20px, 6vw, 40px); color: #4ade80; font-weight: 600; }
+    .version { color: #FFD700; font-size: clamp(12px, 3vw, 16px); font-weight: 600; margin-bottom: 16px; }
     .signin-wrap { margin-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
     .signin-wrap button { background: #3b82f6; color: #fff; border: none; border-radius: 12px; padding: 16px 32px; font-size: 20px; font-weight: 700; cursor: pointer; }
     .signin-wrap button:active { background: #2563eb; }
@@ -33,7 +34,6 @@
     .user-bar { display: none; margin: 8px 16px; padding: 12px 16px; background: #0d0d0d; border: 2px solid #4ade80; border-radius: 12px; color: #4ade80; font-size: 16px; font-weight: 600; text-align: center; }
     .user-bar.visible { display: block; }
     .badge-area { margin-top: auto; padding: 16px; text-align: center; }
-    .version { color: #FFD700; font-size: clamp(12px, 3vw, 16px); font-weight: 600; margin-top: 16px; }
   </style>
   <script data-goatcounter="https://terryfamily.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -42,6 +42,7 @@
   <div class="hero">
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
+    <div class="version">11.23.26 V0.07</div>
     <div class="signin-wrap" id="signinWrap">
       <button onclick="handleSignIn()">Sign In with Google</button>
       <div class="signin-note">Create an account with your Google login to access menus, memos, tabs, and DVIR</div>
@@ -61,7 +62,6 @@
     </div>
   </div>
   <div class="badge-area"></div>
-  <div class="version">11.23.26 V0.06</div>
   <script>
     function handleSignIn() {
       google.accounts.id.initialize({ client_id: "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com", callback: onSignIn });
