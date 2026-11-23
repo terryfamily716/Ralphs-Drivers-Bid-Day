@@ -21,11 +21,14 @@
     .back-link:active { background: #1a1a1a; }
     @media (orientation: landscape) {
       header { padding: 12px; }
-      header h1 { font-size: clamp(24px, 6vw, 48px); }
-      header p { font-size: clamp(14px, 3vw, 22px); }
+      header h1 { font-size: clamp(32px, 8vw, 64px); }
+      header p { font-size: clamp(18px, 4vw, 30px); }
       .back-link { padding: 6px 16px; font-size: 12px; }
       .memos { padding: 0 16px 8px; }
-      .memo { padding: 14px; margin-bottom: 10px; }
+      .memo { padding: 16px; margin-bottom: 12px; }
+      .memo h2 { font-size: clamp(26px, 6vw, 40px); }
+      .memo p { font-size: clamp(20px, 5vw, 30px); }
+      .memo .date { font-size: clamp(16px, 4vw, 20px); }
     }
   </style>
 </head>
@@ -33,13 +36,13 @@
   <header>
     <h1>Driver Memos</h1>
     <p>Important notices for Riverside drivers</p>
-    <div class="version">11.22.26 V0.01</div>
+    <div class="version">11.23.26 V0.02</div>
   </header>
   <div class="memos">
     <div class="memo">
       <h2>Trailer Sealing</h2>
       <p>Attention drivers: make sure you are watching receivers seal your trailer from now on so they don't accidentally have the door open up on you. Management is looking to write drivers up for that.</p>
-      <div class="date">Posted November 22, 2026</div>
+      <div class="date">Posted November 22, 2026 at 6:00 PM</div>
     </div>
   </div>
   <a class="back-link" href="index.html">&larr; Back to Bid Day Live</a>
