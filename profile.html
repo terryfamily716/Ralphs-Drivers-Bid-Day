@@ -50,7 +50,7 @@
   <header>
     <h1>Create Profile</h1>
     <p>Join Bid Day Live</p>
-    <div class="version">11.23.26 V0.05</div>
+    <div class="version">11.23.26 V0.06</div>
   </header>
   <div class="form-area">
     <div class="card">
@@ -62,6 +62,13 @@
       <div class="field">
         <label>Last Name <span class="req">*</span></label>
         <input type="text" id="lastName" placeholder="Enter last name">
+      </div>
+      <div class="field">
+        <label>Company <span class="req">*</span></label>
+        <select id="company">
+          <option value="">Select your company</option>
+          <option value="ralphs">Ralph's Grocery</option>
+        </select>
       </div>
       <div class="field">
         <label>Role <span class="req">*</span></label>
@@ -96,10 +103,15 @@
   async function submitProfile() {
     var first = document.getElementById("firstName").value.trim();
     var last = document.getElementById("lastName").value.trim();
+    var company = document.getElementById("company").value;
     var role = document.getElementById("role").value;
     var msg = document.getElementById("msg");
     if (!first || !last) {
       alert("First name and last name are required.");
+      return;
+    }
+    if (!company) {
+      alert("Please select your company.");
       return;
     }
     if (!role) {
@@ -122,6 +134,7 @@
         body: JSON.stringify({
           "first-name": first,
           "last-name": last,
+          "company": company,
           "role": role,
           "badge-status": "pending",
           "created-at": new Date().toISOString()
@@ -134,6 +147,7 @@
       document.getElementById("overlay").classList.add("show");
       document.getElementById("firstName").value = "";
       document.getElementById("lastName").value = "";
+      document.getElementById("company").value = "";
       document.getElementById("role").value = "";
     } catch (err) {
       msg.className = "msg error";
