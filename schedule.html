@@ -2,35 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>Ralph's Drivers Bid Day Live - Driver Schedule</title>
+  <title>Ralph's Drivers Bid Day Live - Driver Schedule (Photo)</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #1a1a1a; color: #fff; min-height: 100vh; display: flex; flex-direction: column; }
-    .top-bar { display: flex; justify-content: flex-start; padding: 12px 16px; }
+    body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #1a1a1a; color: #fff; min-height: 100vh; }
+    .top-bar { display: flex; justify-content: flex-start; padding: 12px 16px; background: #0d0d0d; }
     .back-link { display: inline-block; padding: 14px 24px; background: #0d0d0d; border: 3px solid #60a5fa; border-radius: 10px; color: #60a5fa; text-decoration: none; font-size: 18px; font-weight: 700; }
-    .back-link:active { background: #1a1a1a; }
     header { text-align: center; padding: 16px; }
     header h1 { font-size: clamp(24px, 6vw, 48px); font-weight: 800; margin-bottom: 8px; }
-    .week-banner { font-size: clamp(28px, 7vw, 56px); font-weight: 900; color: #facc15; background: #2a1a1a; padding: 12px 24px; border-radius: 12px; margin: 8px auto; display: inline-block; letter-spacing: 1px; }
-    header p { font-size: clamp(14px, 3.5vw, 22px); color: #4ade80; font-weight: 600; }
-    .version { color: #FFD700; font-size: clamp(12px, 3vw, 16px); font-weight: 600; margin-top: 4px; }
-    .note { text-align: center; padding: 8px 16px; color: #facc15; font-size: 14px; }
-    .table-container { flex: 1; overflow: auto; margin: 8px 16px 16px; border: 3px solid #ef4444; border-radius: 8px; background: #0d0d0d; }
-    table { width: 100%; border-collapse: collapse; min-width: 1100px; font-size: 16px; }
-    th, td { padding: 12px 8px; text-align: left; border: 1px solid #333; white-space: nowrap; }
-    th { background: #1a1a1a; color: #ef4444; font-weight: 700; position: sticky; top: 0; z-index: 2; text-align: center; font-size: 15px; }
-    th:first-child, td:first-child { position: sticky; left: 0; background: #0d0d0d; z-index: 1; min-width: 180px; text-align: left; }
-    th:first-child { z-index: 3; background: #1a1a1a; }
-    tr:nth-child(even) { background: #151515; }
-    .section { background: #2a1a1a; font-weight: 800; color: #facc15; text-align: center; font-size: 16px; }
-    .ns { color: #facc15; font-weight: 700; }
-    .vac { color: #60a5fa; }
-    .sdof { background: #166534; color: #bbf7d0; font-weight: 700; padding: 2px 6px; border-radius: 4px; }
-    .sen { color: #a3e635; font-weight: 700; text-align: center; }
+    .week-banner { font-size: clamp(28px, 7vw, 56px); font-weight: 900; color: #facc15; background: #2a1a1a; padding: 12px 24px; border-radius: 12px; margin: 8px auto; display: inline-block; }
+    .version { color: #FFD700; font-size: 14px; font-weight: 600; margin-top: 6px; }
+    .note { text-align: center; padding: 10px 16px; color: #facc15; font-size: 15px; }
+    .photo-container { overflow: auto; margin: 8px; text-align: center; -webkit-overflow-scrolling: touch; }
+    .schedule-photo { width: 100%; max-width: 1200px; height: auto; display: block; margin: 0 auto; border: 3px solid #ef4444; border-radius: 8px; }
   </style>
 </head>
 <body>
@@ -40,255 +26,14 @@
   <header>
     <h1>Riverside Driver Schedule</h1>
     <div class="week-banner">WEEK OF 11/09/26</div>
-    <p>Weekly Master Schedule</p>
-    <div class="version">11.24.26 V0.06</div>
+    <div class="version">11.24.26 V0.07 (Photo)</div>
   </header>
-  <div class="note">Days of the week are under each section label to match the photo. N/S in yellow, S/VAC in blue, SDOF in green. Names and times matched as closely as possible to the wall photo; let me know specific corrections.</div>
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr class="section"><td colspan="9">Riverside Weekly Master Driver Schedule - Week starts Monday</td></tr>
-        <tr>
-          <th>Name</th>
-          <th>Mon<br>11/10</th>
-          <th>Tue<br>11/11</th>
-          <th>Wed<br>11/12</th>
-          <th>Thu<br>11/13</th>
-          <th>Fri<br>11/14</th>
-          <th>Sat<br>11/15</th>
-          <th>Sun<br>11/16</th>
-          <th>Sen #</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Avila, Jorge</td><td>0800</td><td>0800</td><td>0800</td><td>0800</td><td>0800</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Orjales, David</td><td>0800</td><td>0800</td><td>0800</td><td>0800</td><td>0800</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Perez, Ruben</td><td>0830</td><td>0830</td><td>0830</td><td>0830</td><td>0830</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Hermes, Tim</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="ns">N/S</td><td>1000</td><td>1000</td><td class="ns">N/S</td><td class="sen">56</td></tr>
-        <tr><td>Navarro, Jose M</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="ns">N/S</td><td>1000</td><td>1000</td><td class="ns">N/S</td><td class="sen">112</td></tr>
-        <tr><td>Lavelle, Richard</td><td>1000</td><td>1000</td><td>1000</td><td>1000</td><td>1000</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">59</td></tr>
-        <tr><td>Barragan, Juan</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Jesus, Jesus</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Moreno, Tony</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Gonzalez, Robert</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Cornell, Mike</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Youkhana, Antwan</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Carroll, Bashier</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Gomez, Juan</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Castellon, Ramon</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Sutphen, Albert</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Sanchez, Ray</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Tarbush, Ryan</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Maza, Hugo</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Arthur</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Dobson, Robby</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Staudemaier, Joe</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Zamora, Octaviano</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Hergert, Ryan</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Belancourt, Jose</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Shay, Jason</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Orjales, Arnold</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Clowney Jr, Eugene</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Malasan, Abelardo</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Molina, Douglas</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Madero, Paul</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Sanchez, Miguel</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Emerson, Ricky</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Newman, Robert</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Garcia, Miguel</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>De Leon, Eric</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Galeano, Kenneth</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Ortega, Miguel</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Granado, Mike</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Ono, Maynard</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Martinez, Prisciliano</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td>1230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Gonzalez, Randy</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Kruz, Martin</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Gonzalez, Juan</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Alzara, Marcus</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Tejeda, Moran</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Delgado, Robert</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Ojeda, Loren</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Felix, Alex</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Rodriguez, Aaron</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Carrillo, Nelson</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Par, Arturo</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Mora, Guillermo</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>De La Rosa, Jesse</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td>1330</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Gomez, Ronald</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Galindo, Juan</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Diaz, Mario</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Meza, Daniel</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Marshall, Aaron</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Palayo, Martin</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td>1400</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Mar, Victor</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Castillo, Henry</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Arias, Gabriel</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Stephenson, Nathlee</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Medina, Anthony</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Terry, Larry</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Porter, Wilbert</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Wheaton, Ivory</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Garcia, Miguel</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Aguilar, Sergio</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Valadez, David</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Ortega, Gregory</td><td>1530</td><td>1530</td><td>1530</td><td>1530</td><td>1530</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Thompson, Bobby</td><td>1530</td><td>1530</td><td>1530</td><td>1530</td><td>1530</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Patterson, Vincent</td><td>1530</td><td>1530</td><td>1530</td><td>1530</td><td>1530</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Yaddis, David</td><td>1530</td><td>1530</td><td>1530</td><td>1530</td><td>1530</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Johnson, Mark</td><td>1600</td><td>1600</td><td>1600</td><td>1600</td><td>1600</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Lovegrove, Antonio</td><td>1600</td><td>1600</td><td>1600</td><td>1600</td><td>1600</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Hanna, Hector</td><td>1600</td><td>1600</td><td>1600</td><td>1600</td><td>1600</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Ferrera, Jonathan</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Carter, Amanda</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Lopez, Luis</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Gonzalez, Leonardo</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>McDonald, Eric</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Gonzalez, Antonio</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Gonzalez, Alejandro</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td>1630</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Everett, Jason</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Hughes, James</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Brown, Chris</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Davila, Juan</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Gallardo, Frank</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Velez, Heriber</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Thomps, Felix</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Hernandez, Jesus</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Lopez, Louis</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Carlos, Ben</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Chavez, Alfred</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td>1730</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-      </tbody>
-    </table>
-
-    <table style="margin-top: 24px;">
-      <thead>
-        <tr class="section"><td colspan="9">AFTER 1800 - Week starts Sunday</td></tr>
-        <tr>
-          <th>Name</th>
-          <th>Sun<br>11/9</th>
-          <th>Mon<br>11/10</th>
-          <th>Tue<br>11/11</th>
-          <th>Wed<br>11/12</th>
-          <th>Thu<br>11/13</th>
-          <th>Fri<br>11/14</th>
-          <th>Sat<br>11/15</th>
-          <th>Sen #</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Garcia, Miguel</td><td>1800</td><td>1800</td><td>1800</td><td>1800</td><td>1800</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Santos, John</td><td>1830</td><td>1830</td><td>1830</td><td>1830</td><td>1830</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Kasper, George</td><td>1900</td><td>1900</td><td>1900</td><td>1900</td><td>1900</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Almoza, Nasser</td><td>1900</td><td>1900</td><td>1900</td><td>1900</td><td>1900</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Omdas, Vincent</td><td>1900</td><td>1900</td><td>1900</td><td>1900</td><td>1900</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Ligon, Charles</td><td>1930</td><td>1930</td><td>1930</td><td>1930</td><td>1930</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Tes, Soham</td><td>1930</td><td>1930</td><td>1930</td><td>1930</td><td>1930</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Raygoza, Larry</td><td>1930</td><td>1930</td><td>1930</td><td>1930</td><td>1930</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Willis, Michael</td><td>2000</td><td>2000</td><td>2000</td><td>2000</td><td>2000</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Nathan, Kevin</td><td>2000</td><td>2000</td><td>2000</td><td>2000</td><td>2000</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Thomas, Rodney Sr</td><td>2000</td><td>2000</td><td>2000</td><td>2000</td><td>2000</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Min, Kevin</td><td>2030</td><td>2030</td><td>2030</td><td>2030</td><td>2030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Alvarez, Samuel</td><td>2030</td><td>2030</td><td>2030</td><td>2030</td><td>2030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Sims, Simmie</td><td>2100</td><td>2100</td><td>2100</td><td>2100</td><td>2100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Mallory, Maurice</td><td>2100</td><td>2100</td><td>2100</td><td>2100</td><td>2100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Lane, Devin</td><td>2130</td><td>2130</td><td>2130</td><td>2130</td><td>2130</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Soto, Darbagan</td><td>2130</td><td>2130</td><td>2130</td><td>2130</td><td>2130</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Ortiz, Manuel</td><td>2200</td><td>2200</td><td>2200</td><td>2200</td><td>2200</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Guerra, Robert</td><td>2200</td><td>2200</td><td>2200</td><td>2200</td><td>2200</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Cruz, Shawn</td><td>2230</td><td>2230</td><td>2230</td><td>2230</td><td>2230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Alonzo, Jose</td><td>2230</td><td>2230</td><td>2230</td><td>2230</td><td>2230</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Martell, Valero Brayan</td><td>2300</td><td>2300</td><td>2300</td><td>2300</td><td>2300</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-        <tr><td>Williams, Roland</td><td>2300</td><td>2300</td><td>2300</td><td>2300</td><td>2300</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen"></td></tr>
-      </tbody>
-    </table>
-
-    <table style="margin-top: 24px;">
-      <thead>
-        <tr class="section"><td colspan="9">Floaters - Week starts Monday</td></tr>
-        <tr>
-          <th>Name</th>
-          <th>Mon<br>11/10</th>
-          <th>Tue<br>11/11</th>
-          <th>Wed<br>11/12</th>
-          <th>Thu<br>11/13</th>
-          <th>Fri<br>11/14</th>
-          <th>Sat<br>11/15</th>
-          <th>Sun<br>11/16</th>
-          <th>Sen #</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Collins, Jose</td><td>0730Y&R</td><td>0730Y&R</td><td>0730Y&R</td><td>0730Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">99</td></tr>
-        <tr><td>Gallagher, Phillip</td><td>0930HR</td><td>0930HR</td><td>0930HR</td><td>0930HR</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">98</td></tr>
-        <tr><td>Pugh, Herman</td><td>0930HR</td><td>0930HR</td><td>0930HR</td><td>0930HR</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">97</td></tr>
-        <tr><td>Estrada, Jose</td><td>0930HR</td><td>0930HR</td><td>0930HR</td><td>0930HR</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">96</td></tr>
-        <tr><td>Ortega, Carlos</td><td>0930SOF</td><td>0930SOF</td><td>0930HR</td><td>0930HR</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">95</td></tr>
-        <tr><td>Mendez, Elizabeth</td><td class="ns">N/S</td><td>0930SOF</td><td>0930SOF</td><td>0930SOF</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">94</td></tr>
-        <tr><td>Ramos, Sergio</td><td>0930SOF</td><td>0930SOF</td><td>0930SOF</td><td>0930SOF</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">93</td></tr>
-        <tr><td>Gonzales, Alfred</td><td>1000</td><td>1000</td><td>1000</td><td>1000</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">92</td></tr>
-        <tr><td>Regalado, Juan</td><td>1000</td><td class="ns">N/S</td><td>1000</td><td>1000</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">91</td></tr>
-        <tr><td>Lara, Arthur</td><td>1000</td><td>1000</td><td>1000</td><td>1000</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">90</td></tr>
-        <tr><td>Perez, Mario</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">89</td></tr>
-        <tr><td>Hernandez, Wilbur</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">88</td></tr>
-        <tr><td>Heredia, Juan</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">87</td></tr>
-        <tr><td>Ramos, Cary</td><td>1030</td><td>1030</td><td>1030</td><td>1030</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">86</td></tr>
-        <tr><td>Neba, Hector</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">85</td></tr>
-        <tr><td>Sanchez, Felix Hipolito</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">84</td></tr>
-        <tr><td>O'Brien, Max</td><td class="ns">N/S</td><td>1100</td><td>1100</td><td>1100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">83</td></tr>
-        <tr><td>Reyes, Alfonso</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">82</td></tr>
-        <tr><td>Medrano, Frankie</td><td>1130</td><td>1130</td><td>1130</td><td>1130</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">81</td></tr>
-        <tr><td>Velez, Alejandro</td><td>1430</td><td>1430</td><td>1430</td><td>1430</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">80</td></tr>
-      </tbody>
-    </table>
-
-    <table style="margin-top: 24px;">
-      <thead>
-        <tr class="section"><td colspan="9">Part Time & Yard - Week starts Monday</td></tr>
-        <tr>
-          <th>Name</th>
-          <th>Mon<br>11/10</th>
-          <th>Tue<br>11/11</th>
-          <th>Wed<br>11/12</th>
-          <th>Thu<br>11/13</th>
-          <th>Fri<br>11/14</th>
-          <th>Sat<br>11/15</th>
-          <th>Sun<br>11/16</th>
-          <th>Sen #</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Lopez, Arthur PT</td><td>0000Y/D</td><td>0000Y/D</td><td>0000Y/D</td><td>0000Y/D</td><td>0000Y/D</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">255</td></tr>
-        <tr><td>Phillip, Gary PT</td><td>0730Y&R</td><td>0730Y&R</td><td>0730Y&R</td><td>0730Y&R</td><td>0730Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">254</td></tr>
-        <tr><td>Reyes, Richard PT</td><td>0830Y&R</td><td>0830Y&R</td><td>0830Y&R</td><td>0830Y&R</td><td>0830Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">253</td></tr>
-        <tr><td>Zamora, Armando PT</td><td>1030Y&R</td><td>1030Y&R</td><td>1030Y&R</td><td>1030Y&R</td><td>1030Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">252</td></tr>
-        <tr><td>Bobadilla, Fernando PT</td><td>1230Y&R</td><td>1230Y&R</td><td>1230Y&R</td><td>1230Y&R</td><td>1230Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">251</td></tr>
-        <tr><td>Rangel, Steve PT</td><td>1600Y&R</td><td>1600Y&R</td><td>1600Y&R</td><td>1600Y&R</td><td>1600Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">250</td></tr>
-        <tr><td>Grishby, Davis</td><td>0100</td><td>0100</td><td>0100</td><td>0100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">255</td></tr>
-        <tr><td>Amezquita, Eduardo</td><td>0100Y/D</td><td class="ns">N/S</td><td>0100SOF</td><td>0100Y/D</td><td>0100Y/D</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">254</td></tr>
-        <tr><td>Molina, Luis</td><td>0200</td><td>0200</td><td>0200</td><td>0200</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">253</td></tr>
-        <tr><td>Nava, Richard</td><td>0300Y&R</td><td>0300Y&R</td><td class="ns">N/S</td><td>0300Y&R</td><td>0300Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">252</td></tr>
-        <tr><td>Gregory, Philip</td><td>0430Y&R</td><td>0430Y&R</td><td>0430Y&R</td><td>0430Y&R</td><td>0430Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">251</td></tr>
-        <tr><td>Gutierrez, Juan</td><td>0500Y&R</td><td>0500Y&R</td><td>0500Y&R</td><td>0500Y&R</td><td>0500Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">250</td></tr>
-        <tr><td>Lopez, Antonio</td><td>0430</td><td>0430</td><td>0430</td><td>0430</td><td>0430</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">249</td></tr>
-        <tr><td>Guerrero, Jose</td><td>0500</td><td>0500</td><td>0500</td><td>0500</td><td>0500</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">248</td></tr>
-        <tr><td>Coja, Mauro</td><td class="ns">N/S</td><td>0530</td><td>0530</td><td>0530</td><td>0530</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">247</td></tr>
-        <tr><td>Guerra, Oscar</td><td>0600Y&R</td><td>0600Y&R</td><td>0600Y&R</td><td>0600Y&R</td><td>0600Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">246</td></tr>
-        <tr><td>Cuevas, Juan</td><td class="ns">N/S</td><td>0830SOF</td><td>0830Y&R</td><td>0830Y&R</td><td>0830Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">245</td></tr>
-        <tr><td>Potter, John</td><td>0100</td><td>0100</td><td class="ns">N/S</td><td>0100</td><td>0100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">244</td></tr>
-        <tr><td>Granados, Anthony</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="ns">N/S</td><td>0730SOF</td><td>0730Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">243</td></tr>
-        <tr><td>Reyes, Ron</td><td>0800</td><td>0800</td><td>0800</td><td>0800</td><td>0800</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">242</td></tr>
-        <tr><td>Turner, Frank</td><td class="ns">N/S</td><td>0930</td><td>0930</td><td>0930</td><td>0930</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">241</td></tr>
-        <tr><td>Turner, Mindy</td><td>0930Y&R</td><td>0930Y&R</td><td>0930Y&R</td><td>0930Y&R</td><td>0930Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">240</td></tr>
-        <tr><td>Wood, Bryan</td><td>1000Y&R</td><td>1000Y&R</td><td>1000Y&R</td><td>1000Y&R</td><td>1000Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">239</td></tr>
-        <tr><td>Vega, Salvador</td><td>1000Y&R</td><td>1000Y&R</td><td class="ns">N/S</td><td class="vac">S/VAC</td><td class="vac">S/VAC</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">238</td></tr>
-        <tr><td>Cervantes, Bert</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td>1100</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">237</td></tr>
-        <tr><td>Hernandez, Miguel</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">236</td></tr>
-        <tr><td>Badillo, Jesus</td><td>1730Y&R</td><td>1730Y&R</td><td>1730Y&R</td><td>1730Y&R</td><td>1730Y&R</td><td class="ns">N/S</td><td class="ns">N/S</td><td class="sen">235</td></tr>
-      </tbody>
-    </table>
+  <div class="note">Scroll and pinch-to-zoom on the photo. Spreadsheet data is saved for when we get a clearer picture to rebuild the table.</div>
+  <div class="photo-container">
+    <img class="schedule-photo" src="schedule.jpg" alt="Riverside Weekly Master Driver Schedule Week of 11/09/26">
   </div>
   <script>
-    var APP_VERSION = "11.24.26 V0.06";
+    var APP_VERSION = "11.24.26 V0.07";
     var stored = localStorage.getItem("bidday_schedule_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_schedule_version", APP_VERSION);
