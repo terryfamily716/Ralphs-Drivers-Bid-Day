@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Ralph's Drivers Bid Day Live - Create Profile</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,7 +23,7 @@
     .field label .req { color: #ef4444; }
     .field input[type="text"], .field select { width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid #2d3748; background: #0f1419; color: #e7e9ea; font-size: 15px; }
     .field input[type="text"]:focus, .field select:focus { outline: none; border-color: #3b82f6; }
-    .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239ca3af' d='M1.41 0L6 4.58L10.59 0L12 1.41l-6 6l-6-6L1.41 0z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewView='0 0 12 8'%3E%3Cpath fill='%239ca3af' d='M1.41 0L6 4.58L10.59 0L12 1.41l-6 6l-6-6L1.41 0z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
     .note { font-size: 12px; color: #6b7280; margin-top: 10px; line-height: 1.5; }
     .note span { color: #f59e0b; }
     .btn { display: block; width: 100%; padding: 16px; border-radius: 12px; border: none; font-size: 17px; font-weight: 600; cursor: pointer; background: #3b82f6; color: #fff; text-align: center; }
@@ -50,7 +53,7 @@
   <header>
     <h1>Create Profile</h1>
     <p>Join Riverside DC Drivers</p>
-    <div class="version">11.23.26 V0.07</div>
+    <div class="version">11.24.26 V0.08</div>
   </header>
   <div class="form-area">
     <div class="card">
@@ -90,6 +93,17 @@
     </div>
   </div>
 <script>
+  var APP_VERSION = "11.24.26 V0.08";
+  var stored = localStorage.getItem("bidday_profile_version");
+  if (stored !== APP_VERSION) {
+    localStorage.setItem("bidday_profile_version", APP_VERSION);
+    if (stored !== null) {
+      var bust = "?v=" + Date.now();
+      if (location.search.indexOf("v=") === -1) {
+        location.replace(location.protocol + "//" + location.host + location.dirname + location.basename + bust);
+      }
+    }
+  }
   var APPWRITE_ENDPOINT = "https://sfo.cloud.appwrite.io/v1";
   var APPWRITE_PROJECT = "6b02c0310015eb4d8908";
   var APPWRITE_KEY = "standard_234d1812d49c4878535bc373041922cdb1450926a1ae210af496978c2c3d36f30ada378c5e9b82f485774bb93bf36853d79fd9ac2586fc7606d929774ca985376fb99efad7f5da17474620493860f556a521de485d7f060e0d7ba7f83bc9d602323074cd3ae5e183c8dd7b3d9b13dc11bd581b570fa86d8e8d5b3e628c6c11b2";
