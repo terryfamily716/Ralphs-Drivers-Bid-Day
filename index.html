@@ -15,11 +15,11 @@
     .hero p { font-size: clamp(20px, 6vw, 40px); color: #4ade80; font-weight: 600; }
     .version { color: #FFD700; font-size: clamp(12px, 3vw, 16px); font-weight: 600; margin-bottom: 16px; }
     .menu-wrap { position: relative; margin: 8px 16px; }
-    .menu-btn { display: block; width: 100%; text-align: center; padding: 22px; background: #0d0d0d; border: 4px solid #ef4444; border-radius: 12px; color: #fff; font-size: 22px; font-weight: 700; cursor: pointer; }
+    .menu-btn { display: block; width: 100%; text-align: center; padding: 12px 16px; background: #0d0d0d; border: 2px solid #ef4444; border-radius: 8px; color: #fff; font-size: 16px; font-weight: 600; cursor: pointer; }
     .menu-btn:active { background: #1a1a1a; }
-    .menu-list { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 10; background: #0d0d0d; border: 4px solid #ef4444; border-top: none; border-radius: 0 0 12px 12px; }
+    .menu-list { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 10; background: #0d0d0d; border: 2px solid #ef4444; border-top: none; border-radius: 0 0 8px 8px; }
     .menu-list.open { display: block; }
-    .menu-list a { display: block; text-align: center; padding: 18px; color: #fff; text-decoration: none; font-size: 20px; font-weight: 700; border-bottom: 2px solid #333; }
+    .menu-list a { display: block; text-align: center; padding: 12px 16px; color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; border-bottom: 1px solid #333; }
     .menu-list a:last-child { border-bottom: none; }
     .menu-list a.memos { color: #facc15; }
     .menu-list a.tabs { color: #60a5fa; }
@@ -34,20 +34,20 @@
   <div class="hero">
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
-    <div class="version">11.24.26 V0.11</div>
+    <div class="version">11.24.26 V0.12</div>
   </div>
   <div class="menu-wrap">
-    <button class="menu-btn" onclick="document.querySelector('.menu-list').classList.toggle('open')">Menu &darr;</button>
+    <button class="menu-btn" onclick="document.querySelector('.menu-list').classList.toggle('open')">Menu</button>
     <div class="menu-list">
-      <a class="memos" href="memos.html">Driver Memos &rarr;</a>
-      <a class="tabs" href="tabs.html">Bid Day Live Tabs &rarr;</a>
-      <a class="schedule" href="schedule.html">Driver Schedule &rarr;</a>
-      <a class="dvir" href="dvir.html">DVIR &rarr;</a>
+      <a class="memos" href="memos.html">Driver Memos</a>
+      <a class="tabs" href="tabs.html">Bid Day Live Tabs</a>
+      <a class="schedule" href="schedule.html">Driver Schedule</a>
+      <a class="dvir" href="dvir.html">DVIR</a>
     </div>
   </div>
   <div class="badge-area"></div>
   <script>
-    var APP_VERSION = "11.24.26 V0.11";
+    var APP_VERSION = "11.24.26 V0.12";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);

@@ -12,34 +12,22 @@
     html, body { height: 100%; }
     body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #1a1a1a; color: #fff; display: flex; flex-direction: column; overflow: hidden; }
     .top-bar { flex-shrink: 0; display: flex; justify-content: flex-start; padding: 12px 16px; }
-    .back-link { display: inline-block; padding: 14px 24px; background: #0d0d0d; border: 3px solid #60a5fa; border-radius: 10px; color: #60a5fa; text-decoration: none; font-size: 18px; font-weight: 700; }
+    .back-link { display: inline-block; padding: 10px 16px; background: #0d0d0d; border: 2px solid #60a5fa; border-radius: 8px; color: #60a5fa; text-decoration: none; font-size: 16px; font-weight: 600; }
     .back-link:active { background: #1a1a1a; }
-    header { flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; }
-    header h1 { font-size: clamp(28px, 8vw, 64px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+    header { flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 16px; }
+    header h1 { font-size: clamp(28px, 8vw, 64px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
     header p { font-size: clamp(16px, 4vw, 28px); color: #4ade80; font-weight: 600; }
     .version { color: #FFD700; font-size: clamp(12px, 3vw, 16px); font-weight: 600; margin-top: 4px; }
     .slider { flex: 1; position: relative; overflow: hidden; touch-action: pan-y; }
     .track { display: flex; height: 100%; transition: transform 0.35s ease; }
     .page { flex: 0 0 100%; width: 100%; height: 100%; overflow-y: auto; padding: 0 16px 16px; }
-    .memo { background: #0d0d0d; border: 4px solid #ef4444; border-radius: 12px; padding: 20px; }
+    .memo { background: #0d0d0d; border: 3px solid #ef4444; border-radius: 8px; padding: 16px; }
     .memo h2 { font-size: clamp(20px, 5vw, 32px); font-weight: 800; color: #ef4444; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
     .memo p { font-size: clamp(16px, 4vw, 24px); line-height: 1.5; color: #fff; font-weight: 600; margin-bottom: 12px; }
     .memo .date { font-size: clamp(13px, 3vw, 16px); color: #888; margin-top: 12px; font-weight: 500; }
     .dots { flex-shrink: 0; display: flex; justify-content: center; gap: 12px; padding: 12px 0 20px; }
-    .dot { width: 14px; height: 14px; border-radius: 50%; background: #444; transition: background 0.3s; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: #444; transition: background 0.3s; }
     .dot.active { background: #ef4444; }
-    @media (orientation: landscape) {
-      header { padding: 12px; }
-      header h1 { font-size: clamp(32px, 8vw, 64px); }
-      header p { font-size: clamp(18px, 4vw, 30px); }
-      .back-link { padding: 10px 20px; font-size: 16px; }
-      .page { padding: 0 16px 8px; }
-      .memo { padding: 16px; }
-      .memo h2 { font-size: clamp(26px, 6vw, 40px); }
-      .memo p { font-size: clamp(20px, 5vw, 30px); }
-      .memo .date { font-size: clamp(16px, 4vw, 20px); }
-      .dots { padding: 8px 0 12px; }
-    }
   </style>
 </head>
 <body>
@@ -49,7 +37,7 @@
   <header>
     <h1>Driver Memos</h1>
     <p>Important notices for Riverside drivers</p>
-    <div class="version">11.24.26 V0.03</div>
+    <div class="version">11.24.26 V0.04</div>
   </header>
   <div class="slider" id="slider">
     <div class="track" id="track">
@@ -72,7 +60,7 @@
           <p>In the event an associate calls in absent on any of the days indicated above, holiday pay will be suppressed until the associate provides a doctor's note to the supervisor. Upon receipt of the Doctor&rsquo;s note, the Time &amp; Attendance Administrator will process any holiday benefit pay that may have been earned.</p>
           <p>Please refer any questions to your location HR Manager.</p>
           <p>Thank you and have a happy and safe Thanksgiving Holiday!</p>
-          <div class="date">Posted November 18, 2026</div>
+          <div class="date">Posted November 18, 2026 at 9:00 AM</div>
         </div>
       </div>
     </div>
@@ -82,7 +70,7 @@
     <div class="dot" data-page="1"></div>
   </div>
   <script>
-    var APP_VERSION = "11.24.26 V0.03";
+    var APP_VERSION = "11.24.26 V0.04";
     var stored = localStorage.getItem("bidday_memos_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_memos_version", APP_VERSION);
