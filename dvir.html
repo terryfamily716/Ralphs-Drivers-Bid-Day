@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Ralph's Drivers DVIR</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
@@ -130,6 +133,17 @@
   <a class="back-link" href="index.html">&larr; Back to Bid Day Live</a>
   <div class="footer">FMCSA requires retention of DVIRs for a minimum of 90 days (49 CFR 396.11). Data retained 90 days. Checklist per 49 CFR 396 Appendix G.</div>
   <script>
+    var APP_VERSION = "11.24.26 V0.01";
+    var stored = localStorage.getItem("bidday_dvir_version");
+    if (stored !== APP_VERSION) {
+      localStorage.setItem("bidday_dvir_version", APP_VERSION);
+      if (stored !== null) {
+        var bust = "?v=" + Date.now();
+        if (location.search.indexOf("v=") === -1) {
+          location.replace(location.protocol + "//" + location.host + location.dirname + location.basename + bust);
+        }
+      }
+    }
     var currentTab = "pre";
     var isOOS = false;
     var photos = [];
