@@ -23,6 +23,7 @@
     .menu-list a:last-child { border-bottom: none; }
     .menu-list a.memos { color: #facc15; }
     .menu-list a.tabs { color: #60a5fa; }
+    .menu-list a.schedule { color: #4ade80; }
     .menu-list a.dvir { color: #f97316; }
     .menu-list a:active { background: #1a1a1a; }
     .badge-area { margin-top: auto; padding: 16px; text-align: center; }
@@ -33,19 +34,20 @@
   <div class="hero">
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
-    <div class="version">11.24.26 V0.10</div>
+    <div class="version">11.24.26 V0.11</div>
   </div>
   <div class="menu-wrap">
     <button class="menu-btn" onclick="document.querySelector('.menu-list').classList.toggle('open')">Menu &darr;</button>
     <div class="menu-list">
       <a class="memos" href="memos.html">Driver Memos &rarr;</a>
       <a class="tabs" href="tabs.html">Bid Day Live Tabs &rarr;</a>
+      <a class="schedule" href="schedule.html">Driver Schedule &rarr;</a>
       <a class="dvir" href="dvir.html">DVIR &rarr;</a>
     </div>
   </div>
   <div class="badge-area"></div>
   <script>
-    var APP_VERSION = "11.24.26 V0.10";
+    var APP_VERSION = "11.24.26 V0.11";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);

@@ -23,9 +23,8 @@
     .page { flex: 0 0 100%; width: 100%; height: 100%; overflow-y: auto; padding: 0 16px 16px; }
     .memo { background: #0d0d0d; border: 4px solid #ef4444; border-radius: 12px; padding: 20px; }
     .memo h2 { font-size: clamp(20px, 5vw, 32px); font-weight: 800; color: #ef4444; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
-    .memo p { font-size: clamp(16px, 4vw, 24px); line-height: 1.5; color: #fff; font-weight: 600; }
+    .memo p { font-size: clamp(16px, 4vw, 24px); line-height: 1.5; color: #fff; font-weight: 600; margin-bottom: 12px; }
     .memo .date { font-size: clamp(13px, 3vw, 16px); color: #888; margin-top: 12px; font-weight: 500; }
-    .blank-page { display: flex; align-items: center; justify-content: center; height: 100%; color: #555; font-size: clamp(18px, 5vw, 28px); font-weight: 600; text-align: center; padding: 20px; }
     .dots { flex-shrink: 0; display: flex; justify-content: center; gap: 12px; padding: 12px 0 20px; }
     .dot { width: 14px; height: 14px; border-radius: 50%; background: #444; transition: background 0.3s; }
     .dot.active { background: #ef4444; }
@@ -50,7 +49,7 @@
   <header>
     <h1>Driver Memos</h1>
     <p>Important notices for Riverside drivers</p>
-    <div class="version">11.24.26 V0.02</div>
+    <div class="version">11.24.26 V0.03</div>
   </header>
   <div class="slider" id="slider">
     <div class="track" id="track">
@@ -62,7 +61,19 @@
         </div>
       </div>
       <div class="page">
-        <div class="blank-page">Memo page 2 coming soon.<br>Swipe to see it.</div>
+        <div class="memo">
+          <h2>Thanksgiving Day Holiday Reminder</h2>
+          <p><strong>Date:</strong> November 18, 2026<br>
+          <strong>To:</strong> Hourly Associates - Teamsters<br>
+          <strong>From:</strong> Distribution Management<br>
+          <strong>Subject:</strong> Thanksgiving Day Holiday - Reminder</p>
+          <p>Just a reminder with the holiday coming up, Thanksgiving Holiday Thursday, November 26th the following language from the CBA states:</p>
+          <p>&ldquo;In order to be entitled to holiday pay, an employee must work their scheduled workday immediately preceding, the day of the holiday, if scheduled; and immediately following the holiday, except for excusable absences such as illness, or injury or leave of absence.&rdquo;</p>
+          <p>In the event an associate calls in absent on any of the days indicated above, holiday pay will be suppressed until the associate provides a doctor's note to the supervisor. Upon receipt of the Doctor&rsquo;s note, the Time &amp; Attendance Administrator will process any holiday benefit pay that may have been earned.</p>
+          <p>Please refer any questions to your location HR Manager.</p>
+          <p>Thank you and have a happy and safe Thanksgiving Holiday!</p>
+          <div class="date">Posted November 18, 2026</div>
+        </div>
       </div>
     </div>
   </div>
@@ -71,7 +82,7 @@
     <div class="dot" data-page="1"></div>
   </div>
   <script>
-    var APP_VERSION = "11.24.26 V0.02";
+    var APP_VERSION = "11.24.26 V0.03";
     var stored = localStorage.getItem("bidday_memos_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_memos_version", APP_VERSION);
