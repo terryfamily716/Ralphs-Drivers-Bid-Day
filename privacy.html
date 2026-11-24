@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Privacy Policy - Ralph's Drivers Bid Day Live</title>
   <style>
     body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #1a1a1a; color: #fff; max-width: 720px; margin: 0 auto; padding: 24px; line-height: 1.6; }
@@ -27,5 +30,18 @@
   <p>DVIR records are retained for a minimum of 90 days per FMCSA regulations. Profile data is retained while your account is active.</p>
   <h2>Contact</h2>
   <p>Questions about this policy can be sent to terryfamily716 at gmail dot com.</p>
+  <script>
+    var APP_VERSION = "11.24.26 V0.01";
+    var stored = localStorage.getItem("bidday_privacy_version");
+    if (stored !== APP_VERSION) {
+      localStorage.setItem("bidday_privacy_version", APP_VERSION);
+      if (stored !== null) {
+        var bust = "?v=" + Date.now();
+        if (location.search.indexOf("v=") === -1) {
+          location.replace(location.protocol + "//" + location.host + location.dirname + location.basename + bust);
+        }
+      }
+    }
+  </script>
 </body>
 </html>
