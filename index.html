@@ -26,7 +26,6 @@
     .menu-list a.schedule { color: #4ade80; }
     .menu-list a.dvir { color: #f97316; }
     .menu-list a.stores { color: #a78bfa; }
-    .menu-list a.game { color: #f472b6; }
     .menu-list a:active { background: #1a1a1a; }
     .badge-area { margin-top: auto; padding: 16px; text-align: center; }
   </style>
@@ -36,7 +35,7 @@
   <div class="hero">
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
-    <div class="version">11.24.26 V0.15</div>
+    <div class="version">11.24.26 V0.16</div>
   </div>
   <div class="menu-wrap">
     <button class="menu-btn" onclick="document.querySelector('.menu-list').classList.toggle('open')">Menu</button>
@@ -46,19 +45,18 @@
       <a class="schedule" href="schedule.html">Driver Schedule</a>
       <a class="dvir" href="dvir.html">DVIR</a>
       <a class="stores" href="https://ralphsdrivers.weebly.com/1-99.html" target="_blank">Store Locations</a>
-      <a class="game" href="world-power.html">World Power Game</a>
     </div>
   </div>
   <div class="badge-area"></div>
   <script>
-    var APP_VERSION = "11.24.26 V0.15";
+    var APP_VERSION = "11.24.26 V0.16";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
       if (stored !== null) {
         var bust = "?v=" + Date.now();
         if (location.search.indexOf("v=") === -1) {
-          location.replace(location.protocol + "//" + location.host + location.pathname + bust);
+          location.replace(location.protocol + "//" + location.host + location.hostname + location.pathname + bust);
         }
       }
     }
