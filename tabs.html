@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Ralph's Drivers Bid Day Live Tabs</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,6 +45,17 @@
   </div>
   <a class="back-link" href="index.html">&larr; Back to Bid Day Live</a>
   <script>
+    var APP_VERSION = "11.24.26 V0.01";
+    var stored = localStorage.getItem("bidday_tabs_version");
+    if (stored !== APP_VERSION) {
+      localStorage.setItem("bidday_tabs_version", APP_VERSION);
+      if (stored !== null) {
+        var bust = "?v=" + Date.now();
+        if (location.search.indexOf("v=") === -1) {
+          location.replace(location.protocol + "//" + location.host + location.pathname + bust);
+        }
+      }
+    }
     setTimeout(function () {
       var frame = document.querySelector('iframe);
       try {
