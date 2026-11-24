@@ -7,7 +7,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
-    body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #1a1a1a; color: #fff; display: flex; flex-direction: column; }
+    body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #1a1a1a; color: #fff; display: flex; flex-direction: column; overflow: hidden; }
     .top-bar { flex-shrink: 0; display: flex; justify-content: flex-start; padding: 12px 16px; }
     .back-link { display: inline-block; padding: 14px 24px; background: #0d0d0d; border: 3px solid #60a5fa; border-radius: 10px; color: #60a5fa; text-decoration: none; font-size: 18px; font-weight: 700; }
     .back-link:active { background: #1a1a1a; }
@@ -15,21 +15,28 @@
     header h1 { font-size: clamp(28px, 8vw, 64px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
     header p { font-size: clamp(16px, 4vw, 28px); color: #4ade80; font-weight: 600; }
     .version { color: #FFD700; font-size: clamp(12px, 3vw, 16px); font-weight: 600; margin-top: 4px; }
-    .memos { flex: 1; overflow-y: auto; padding: 0 16px 16px; }
-    .memo { background: #0d0d0d; border: 4px solid #ef4444; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .slider { flex: 1; position: relative; overflow: hidden; touch-action: pan-y; }
+    .track { display: flex; height: 100%; transition: transform 0.35s ease; }
+    .page { flex: 0 0 100%; width: 100%; height: 100%; overflow-y: auto; padding: 0 16px 16px; }
+    .memo { background: #0d0d0d; border: 4px solid #ef4444; border-radius: 12px; padding: 20px; }
     .memo h2 { font-size: clamp(20px, 5vw, 32px); font-weight: 800; color: #ef4444; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
     .memo p { font-size: clamp(16px, 4vw, 24px); line-height: 1.5; color: #fff; font-weight: 600; }
     .memo .date { font-size: clamp(13px, 3vw, 16px); color: #888; margin-top: 12px; font-weight: 500; }
+    .blank-page { display: flex; align-items: center; justify-content: center; height: 100%; color: #555; font-size: clamp(18px, 5vw, 28px); font-weight: 600; text-align: center; padding: 20px; }
+    .dots { flex-shrink: 0; display: flex; justify-content: center; gap: 12px; padding: 12px 0 20px; }
+    .dot { width: 14px; height: 14px; border-radius: 50%; background: #444; transition: background 0.3s; }
+    .dot.active { background: #ef4444; }
     @media (orientation: landscape) {
       header { padding: 12px; }
       header h1 { font-size: clamp(32px, 8vw, 64px); }
       header p { font-size: clamp(18px, 4vw, 30px); }
       .back-link { padding: 10px 20px; font-size: 16px; }
-      .memos { padding: 0 16px 8px; }
-      .memo { padding: 16px; margin-bottom: 12px; }
+      .page { padding: 0 16px 8px; }
+      .memo { padding: 16px; }
       .memo h2 { font-size: clamp(26px, 6vw, 40px); }
       .memo p { font-size: clamp(20px, 5vw, 30px); }
       .memo .date { font-size: clamp(16px, 4vw, 20px); }
+      .dots { padding: 8px 0 12px; }
     }
   </style>
 </head>
@@ -40,14 +47,109 @@
   <header>
     <h1>Driver Memos</h1>
     <p>Important notices for Riverside drivers</p>
-    <div class="version">11.23.26 V0.03</div>
+    <div class="version">11.24.26 V0.01</div>
   </header>
-  <div class="memos">
-    <div class="memo">
-      <h2>Trailer Sealing</h2>
-      <p>Attention drivers: make sure you are watching receivers seal your trailer from now on so they don't accidentally have the door open up on you. Management is looking to write drivers up for that.</p>
-      <div class="date">Posted November 22, 2026 at 6:00 PM</div>
+  <div class="slider" id="slider">
+    <div class="track" id="track">
+      <div class="page">
+        <div class="memo">
+          <h2>Trailer Sealing</h2>
+          <p>Attention drivers: make sure you are watching receivers seal your trailer from now on so they don't accidentally have the door open up on you. Management is looking to write drivers up for that.</p>
+          <div class="date">Posted November 22, 2026 at 6:00 PM</div>
+        </div>
+      </div>
+      <div class="page">
+        <div class="blank-page">Memo page 2 coming soon.<br>Swipe to see it.</div>
+      </div>
     </div>
   </div>
+  <div class="dots" id="dots">
+    <div class="dot active" data-page="0"></div>
+    <div class="dot" data-page="1"></div>
+  </div>
+  <script>
+    (function () {
+      var track = document.getElementById("track");
+      var dots = document.querySelectorAll(".dot");
+      var slider = document.getElementById("slider");
+      var current = 0;
+      var total = 2;
+      var startX = 0;
+      var startY = 0;
+      var isDown = false;
+      var threshold = 60;
+
+      function goTo(page) {
+        current = Math.max(0, Math.min(total - 1, page));
+        track.style.transform = "translateX(-" + (current * 100) + "%)";
+        for (var i = 0; i < dots.length; i++) {
+          dots[i].classList.toggle("active", i === current);
+        }
+      }
+
+      slider.addEventListener("touchstart", function (e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isDown = true;
+      }, { passive: true });
+
+      slider.addEventListener("touchmove", function (e) {
+        if (!isDown) return;
+        var dx = e.touches[0].clientX - startX;
+        var dy = e.touches[0].clientY - startY;
+        if (Math.abs(dx) > Math.abs(dy)) {
+          track.style.transition = "none";
+          track.style.transform = "translateX(calc(-" + (current * 100) + "% + " + dx + "px))";
+        }
+      }, { passive: true });
+
+      slider.addEventListener("touchend", function (e) {
+        if (!isDown) return;
+        isDown = false;
+        track.style.transition = "";
+        var dx = e.changedTouches[0].clientX - startX;
+        if (dx < -threshold) goTo(current + 1);
+        else if (dx > threshold) goTo(current - 1);
+        else goTo(current);
+      }, { passive: true });
+
+      slider.addEventListener("mousedown", function (e) {
+        startX = e.clientX;
+        startY = e.clientY;
+        isDown = true;
+        track.style.transition = "none";
+      });
+
+      window.addEventListener("mousemove", function (e) {
+        if (!isDown) return;
+        var dx = e.clientX - startX;
+        var dy = e.clientY - startY;
+        if (Math.abs(dx) > Math.abs(dy)) {
+          track.style.transform = "translateX(calc(-" + (current * 100) + "% + " + dx + "px))";
+        }
+      });
+
+      window.addEventListener("mouseup", function (e) {
+        if (!isDown) return;
+        isDown = false;
+        track.style.transition = "";
+        var dx = e.clientX - startX;
+        if (dx < -threshold) goTo(current + 1);
+        else if (dx > threshold) goTo(current - 1);
+        else goTo(current);
+      });
+
+      for (var d = 0; d < dots.length; d++) {
+        dots[d].addEventListener("click", function () {
+          goTo(parseInt(this.getAttribute("data-page"), 10));
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") goTo(current + 1);
+        else if (e.key === "ArrowLeft") goTo(current - 1);
+      });
+    })();
+  </script>
 </body>
 </html>
