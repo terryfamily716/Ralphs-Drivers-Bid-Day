@@ -14,19 +14,19 @@
     .back-link { display: inline-block; padding: 14px 24px; background: #0d0d0d; border: 3px solid #60a5fa; border-radius: 10px; color: #60a5fa; text-decoration: none; font-size: 18px; font-weight: 700; }
     .back-link:active { background: #1a1a1a; }
     header { text-align: center; padding: 16px; }
-    header h1 { font-size: clamp(26px, 6.5vw, 52px); font-weight: 800; margin-bottom: 8px; }
-    .week-banner { font-size: clamp(30px, 7.5vw, 60px); font-weight: 900; color: #facc15; background: #2a1a1a; padding: 14px 28px; border-radius: 12px; margin: 8px auto; display: inline-block; letter-spacing: 1px; }
-    header p { font-size: clamp(16px, 4vw, 24px); color: #4ade80; font-weight: 600; }
-    .version { color: #FFD700; font-size: clamp(14px, 3.5vw, 18px); font-weight: 600; margin-top: 6px; }
-    .note { text-align: center; padding: 10px 16px; color: #facc15; font-size: 15px; }
+    header h1 { font-size: clamp(24px, 6vw, 48px); font-weight: 800; margin-bottom: 8px; }
+    .week-banner { font-size: clamp(28px, 7vw, 56px); font-weight: 900; color: #facc15; background: #2a1a1a; padding: 12px 24px; border-radius: 12px; margin: 8px auto; display: inline-block; letter-spacing: 1px; }
+    header p { font-size: clamp(14px, 3.5vw, 22px); color: #4ade80; font-weight: 600; }
+    .version { color: #FFD700; font-size: clamp(12px, 3vw, 16px); font-weight: 600; margin-top: 4px; }
+    .note { text-align: center; padding: 8px 16px; color: #facc15; font-size: 14px; }
     .table-container { flex: 1; overflow: auto; margin: 8px 16px 16px; border: 3px solid #ef4444; border-radius: 8px; background: #0d0d0d; }
-    table { width: 100%; border-collapse: collapse; min-width: 1100px; font-size: 14px; }
-    th, td { padding: 10px 7px; text-align: left; border: 1px solid #333; white-space: nowrap; }
-    th { background: #1a1a1a; color: #ef4444; font-weight: 700; position: sticky; top: 0; z-index: 2; text-align: center; font-size: 13px; }
-    th:first-child, td:first-child { position: sticky; left: 0; background: #0d0d0d; z-index: 1; min-width: 170px; text-align: left; }
+    table { width: 100%; border-collapse: collapse; min-width: 1100px; font-size: 16px; }
+    th, td { padding: 12px 8px; text-align: left; border: 1px solid #333; white-space: nowrap; }
+    th { background: #1a1a1a; color: #ef4444; font-weight: 700; position: sticky; top: 0; z-index: 2; text-align: center; font-size: 15px; }
+    th:first-child, td:first-child { position: sticky; left: 0; background: #0d0d0d; z-index: 1; min-width: 180px; text-align: left; }
     th:first-child { z-index: 3; background: #1a1a1a; }
     tr:nth-child(even) { background: #151515; }
-    .section { background: #2a1a1a; font-weight: 800; color: #facc15; text-align: center; font-size: 15px; }
+    .section { background: #2a1a1a; font-weight: 800; color: #facc15; text-align: center; font-size: 16px; }
     .ns { color: #facc15; font-weight: 700; }
     .vac { color: #60a5fa; }
     .sen { color: #a3e635; font-weight: 700; text-align: center; }
@@ -40,9 +40,9 @@
     <h1>Riverside Driver Schedule</h1>
     <div class="week-banner">WEEK OF 11/09/26</div>
     <p>Weekly Master Schedule</p>
-    <div class="version">11.24.26 V0.04</div>
+    <div class="version">11.24.26 V0.05</div>
   </header>
-  <div class="note">Day headers change by section (Mon-start vs Sun-start). N/S yellow. Sen # green. Font enlarged. After 1800 section added.</div>
+  <div class="note">Day headers change by section (Mon-start vs Sun-start). N/S yellow. Sen # green. Table names and times enlarged.</div>
   <div class="table-container">
     <table>
       <thead>
@@ -287,7 +287,7 @@
     </table>
   </div>
   <script>
-    var APP_VERSION = "11.24.26 V0.04";
+    var APP_VERSION = "11.24.26 V0.05";
     var stored = localStorage.getItem("bidday_schedule_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_schedule_version", APP_VERSION);
