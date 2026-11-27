@@ -31,7 +31,6 @@
     .menu-list a.memos { color: #facc15; }
     .menu-list a.tabs { color: #60a5fa; }
     .menu-list a.schedule { color: #4ade80; }
-    .menu-list a.schedule-new { color: #facc15; }
     .menu-list a.dvir { color: #f97316; }
     .menu-list a.stores { color: #a78bfa; }
     .menu-list a:active { background: #1a1a1a; }
@@ -52,22 +51,21 @@
     </div>
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
-    <div class="version">11.26.26 V0.23</div>
+    <div class="version">11.26.26 V0.24</div>
   </div>
   <div class="menu-wrap">
     <button class="menu-btn" onclick="document.querySelector('.menu-list').classList.toggle('open')">Menu</button>
     <div class="menu-list">
       <a class="memos" href="memos.html">Driver Memos</a>
       <a class="tabs" href="tabs.html">Bid Day Live Tabs</a>
-      <a class="schedule" href="schedule.html">Driver Schedule (11/23)</a>
-      <a class="schedule-new" href="schedule-1130.html">Driver Schedule (11/30)</a>
+      <a class="schedule" href="schedule.html">Driver Schedule</a>
       <a class="dvir" href="dvir.html">DVIR</a>
       <a class="stores" href="https://ralphsdrivers.weebly.com/1-99.html" target="_blank">Store Locations</a>
     </div>
   </div>
   <div class="badge-area"></div>
   <script>
-    var APP_VERSION = "11.26.26 V0.23";
+    var APP_VERSION = "11.26.26 V0.24";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
