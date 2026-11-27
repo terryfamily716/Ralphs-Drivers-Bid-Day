@@ -52,7 +52,7 @@
     <h2>Join the Room</h2>
     <p>Enter your display name to start chatting</p>
     <input type="text" id="display-name" placeholder="Your name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="20">
-    <button id="join-btn" disabled>Join Chat</button>
+    <button id="join-btn" disabled>Enter Chat Room</button>
   </div>
 
   <div class="chat-screen" id="chat-screen">
@@ -62,7 +62,7 @@
       <button id="send-btn" disabled>Send</button>
     </div>
   </div>
-  <div class="version">11.27.26 V0.03</div>
+  <div class="version">11.27.26 V0.04</div>
 
   <script src="https://cdn.ably.com/lib/ably.min-2.js"></script>
   <script>
@@ -83,9 +83,12 @@
     var sendBtn = document.getElementById("send-btn");
     var onlineList = document.getElementById("online-list");
 
-    nameInput.addEventListener("input", function() {
+    function updateJoinBtn() {
       joinBtn.disabled = nameInput.value.trim().length === 0;
-    });
+    }
+    nameInput.addEventListener("input", updateJoinBtn);
+    nameInput.addEventListener("keydown", updateJoinBtn);
+    nameInput.addEventListener("paste", function() { setTimeout(updateJoinBtn, 0); });
 
     nameInput.addEventListener("keydown", function(e) {
       if (e.key === "Enter" && !joinBtn.disabled) joinRoom();
@@ -201,7 +204,7 @@
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
-    var APP_VERSION = "11.27.26 V0.03";
+    var APP_VERSION = "11.27.26 V0.04";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
