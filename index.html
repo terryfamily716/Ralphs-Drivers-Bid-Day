@@ -52,7 +52,7 @@
     </div>
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
-    <div class="version">11.26.26 V0.20</div>
+    <div class="version">11.26.26 V0.21</div>
   </div>
   <div class="menu-wrap">
     <button class="menu-btn" onclick="document.querySelector('.menu-list').classList.toggle('open')">Menu</button>
@@ -67,7 +67,7 @@
   </div>
   <div class="badge-area"></div>
   <script>
-    var APP_VERSION = "11.26.26 V0.20";
+    var APP_VERSION = "11.26.26 V0.21";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
@@ -83,7 +83,6 @@
     function updateCountdown() {
       var now = new Date();
       var diff = bidDay.getTime() - now.getTime();
-      var banner = document.getElementById("countdown-banner");
       var grid = document.getElementById("countdown-grid");
       if (diff <= 0) {
         grid.innerHTML = "<div class='countdown-done'>Bid Day is today</div>";
@@ -100,13 +99,25 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
-    window.onload = function() {
-      var t = setInterval(function() {
-        if (window.goatcounter && window.goatcounter.visit_count) {
-          clearInterval(t);
-          window.goatcounter.visit_count({ append: ".badge-area" });
+    var lastBadgeCount = 0;
+    window. goatcounter = window.goatcounter || {};
+    window.goatcounter.ready = function() {
+      window.goatcounter.visit_count({ append: ".badge-area" });
+      setInterval(function() {
+        var badge = document.querySelector(".badge-area");
+        if (badge) {
+          var txt = badge.textContent || "";
+          var m = txt.match(/(\d+)/);
+          if (m) {
+            var n = parseInt(m[1], 10);
+            if (n > lastBadgeCount) {
+              lastBadgeCount = n;
+            } else if (n < lastBadgeCount) {
+              badge.textContent = txt.replace(m[1], lastBadgeCount);
+            }
+          }
         }
-      }, 100);
+      }, 2000);
     };
   </script>
 </body>
