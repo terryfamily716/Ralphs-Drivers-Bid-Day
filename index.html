@@ -52,7 +52,7 @@
     </div>
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
-    <div class="version">11.26.26 V0.21</div>
+    <div class="version">11.26.26 V0.22</div>
   </div>
   <div class="menu-wrap">
     <button class="menu-btn" onclick="document.querySelector('.menu-list').classList.toggle('open')">Menu</button>
@@ -67,14 +67,14 @@
   </div>
   <div class="badge-area"></div>
   <script>
-    var APP_VERSION = "11.26.26 V0.21";
+    var APP_VERSION = "11.26.26 V0.22";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
       if (stored !== null) {
         var bust = "?v=" + Date.now();
         if (location.search.indexOf("v=") === -1) {
-          location.replace(location.protocol + "//" + location.host + location.hostname + location.pathname + bust);
+          location.replace(location.protocol + "//" + location.host + location.hostname + location.dirname + location.basename + bust);
         }
       }
     }
@@ -100,9 +100,9 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
     var lastBadgeCount = 0;
-    window. goatcounter = window.goatcounter || {};
+    window.goatcounter = window.goatcounter || {};
     window.goatcounter.ready = function() {
-      window.goatcounter.visit_count({ append: ".badge-area" });
+      window.goatcounter.visit_count({ append: ".badge-area", path: "TOTAL" });
       setInterval(function() {
         var badge = document.querySelector(".badge-area");
         if (badge) {
