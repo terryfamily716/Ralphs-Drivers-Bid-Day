@@ -11,6 +11,13 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #1a1a1a; color: #fff; min-height: 100vh; display: flex; flex-direction: column; }
     .hero { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; margin: 16px; border-radius: 12px; }
+    .countdown-banner { width: 100%; max-width: 640px; margin-bottom: 24px; padding: 16px 12px; background: #0d0d0d; border: 3px solid #ef4444; border-radius: 10px; }
+    .countdown-label { font-size: clamp(14px, 4vw, 20px); font-weight: 700; color: #fff; margin-bottom: 12px; letter-spacing: 1px; }
+    .countdown-grid { display: flex; justify-content: center; gap: clamp(8px, 3vw, 20px); }
+    .countdown-unit { display: flex; flex-direction: column; align-items: center; min-width: clamp(52px, 14vw, 80px); }
+    .countdown-num { font-size: clamp(28px, 9vw, 52px); font-weight: 800; color: #FFD700; line-height: 1; }
+    .countdown-unit-label { font-size: clamp(10px, 2.5vw, 13px); color: #fff; font-weight: 600; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+    .countdown-done { font-size: clamp(20px, 6vw, 32px); font-weight: 800; color: #4ade80; }
     .hero h1 { font-size: clamp(36px, 11vw, 92px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
     .hero p { font-size: clamp(20px, 6vw, 40px); color: #4ade80; font-weight: 600; }
     .version { color: #FFD700; font-size: clamp(12px, 3vw, 16px); font-weight: 600; margin-bottom: 16px; }
@@ -34,9 +41,18 @@
 </head>
 <body>
   <div class="hero">
+    <div class="countdown-banner" id="countdown-banner">
+      <div class="countdown-label">Countdown to Bid Day</div>
+      <div class="countdown-grid" id="countdown-grid">
+        <div class="countdown-unit"><div class="countdown-num" id="cd-days">--</div><div class="countdown-unit-label">Days</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-unit-label">Hours</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cd-mins">--</div><div class="countdown-unit-label">Mins</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-unit-label">Secs</div></div>
+      </div>
+    </div>
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
-    <div class="version">11.26.26 V0.17</div>
+    <div class="version">11.26.26 V0.18</div>
   </div>
   <div class="menu-wrap">
     <button class="menu-btn" onclick="document.querySelector('.menu-list').classList.toggle('open')">Menu</button>
@@ -51,7 +67,7 @@
   </div>
   <div class="badge-area"></div>
   <script>
-    var APP_VERSION = "11.26.26 V0.17";
+    var APP_VERSION = "11.26.26 V0.18";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
@@ -62,6 +78,28 @@
         }
       }
     }
+    var bidDay = new Date("2027-01-21T09:00:00-08:00");
+    function pad(n) { return n < 10 ? "0" + n : "" + n; }
+    function updateCountdown() {
+      var now = new Date();
+      var diff = bidDay.getTime() - now.getTime();
+      var banner = document.getElementById("countdown-banner");
+      var grid = document.getElementById("countdown-grid");
+      if (diff <= 0) {
+        grid.innerHTML = "<div class='countdown-done'>Bid Day is today</div>";
+        return;
+      }
+      var days = Math.floor(diff / 86400000);
+      var hours = Math.floor((diff % 86400000) / 3600000);
+      var mins = Math.floor((diff % 3600000) / 60000);
+      var secs = Math.floor((diff % 60000) / 1000);
+      document.getElementById("cd-days").textContent = days;
+      document.getElementById("cd-hours").textContent = pad(hours);
+      document.getElementById("cd-mins").textContent = pad(mins);
+      document.getElementById("cd-secs").textContent = pad(secs);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
     window.onload = function() {
       var t = setInterval(function() {
         if (window.goatcounter && window.goatcounter.visit_count) {
