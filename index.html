@@ -52,7 +52,7 @@
     </div>
     <h1>Welcome Riverside Drivers to Bid Day Live</h1>
     <p>Where the bid happens in real time</p>
-    <div class="version">11.26.26 V0.22</div>
+    <div class="version">11.26.26 V0.23</div>
   </div>
   <div class="menu-wrap">
     <button class="menu-btn" onclick="document.querySelector('.menu-list').classList.toggle('open')">Menu</button>
@@ -67,7 +67,7 @@
   </div>
   <div class="badge-area"></div>
   <script>
-    var APP_VERSION = "11.26.26 V0.22";
+    var APP_VERSION = "11.26.26 V0.23";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
@@ -102,23 +102,29 @@
     var lastBadgeCount = 0;
     window.goatcounter = window.goatcounter || {};
     window.goatcounter.ready = function() {
-      window.goatcounter.visit_count({ append: ".badge-area", path: "TOTAL" });
-      setInterval(function() {
-        var badge = document.querySelector(".badge-area");
-        if (badge) {
-          var txt = badge.textContent || "";
-          var m = txt.match(/(\d+)/);
-          if (m) {
-            var n = parseInt(m[1], 10);
-            if (n > lastBadgeCount) {
-              lastBadgeCount = n;
-            } else if (n < lastBadgeCount) {
-              badge.textContent = txt.replace(m[1], lastBadgeCount);
-            }
+      window.goatcounter.visit_count({ append: ".badge-area", path: "TOTAL", type: "html" });
+    };
+    var t = setInterval(function() {
+      if (window.goatcounter && window.goatcounter.visit_count) {
+        clearInterval(t);
+        window.goatcounter.visit_count({ append: ".badge-area", path: "TOTAL", type: "html" });
+      }
+    }, 100);
+    setInterval(function() {
+      var badge = document.querySelector(".badge-area");
+      if (badge) {
+        var txt = badge.textContent || "";
+        var m = txt.match(/(\d+)/);
+        if (m) {
+          var n = parseInt(m[1], 10);
+          if (n > lastBadgeCount) {
+            lastBadgeCount = n;
+          } else if (n < lastBadgeCount) {
+            badge.textContent = txt.replace(m[1], lastBadgeCount);
           }
         }
-      }, 2000);
-    };
+      }
+    }, 2000);
   </script>
 </body>
 </html>
