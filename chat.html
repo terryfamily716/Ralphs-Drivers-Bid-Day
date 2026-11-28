@@ -34,13 +34,7 @@
     .msg.me .who { color: #93c5fd; }
     .msg .time { font-size: 10px; color: #666; margin-top: 4px; text-align: right; }
     .system-msg { text-align: center; color: #888; font-size: 12px; padding: 4px 0; font-style: italic; }
-    .photo-thumbs { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 16px 0; background: #0d0d0d; }
-    .photo-thumbs img { max-height: 70px; border-radius: 8px; border: 1px solid #333; }
-    .photo-thumbs .thumb-wrap { position: relative; }
-    .photo-thumbs .remove-btn { position: absolute; top: -6px; right: -6px; background: #ef4444; color: #fff; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; cursor: pointer; }
     .input-bar { background: #0d0d0d; border-top: 2px solid #333; padding: 10px 16px; display: flex; gap: 10px; align-items: center; }
-    .photo-btn { background: none; border: 2px solid #3b82f6; color: #60a5fa; border-radius: 10px; padding: 10px 14px; font-size: 20px; cursor: pointer; flex-shrink: 0; }
-    .photo-btn:active { background: #1e3a5f; }
     .input-bar input { flex: 1; padding: 12px 14px; background: #1a1a1a; border: 2px solid #333; border-radius: 10px; color: #fff; font-size: 16px; }
     .input-bar input:focus { outline: none; border-color: #ef4444; }
     .input-bar button { padding: 12px 20px; background: #ef4444; border: none; border-radius: 10px; color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; flex-shrink: 0; }
@@ -70,15 +64,12 @@
 
   <div class="chat-screen" id="chat-screen">
     <div class="messages" id="messages"></div>
-    <div class="photo-thumbs" id="photo-thumbs"></div>
     <div class="input-bar">
-      <button class="photo-btn" id="photo-btn" title="Add photo">+</button>
-      <input type="file" id="photo-input" accept="image/*" multiple style="display:none">
       <input type="text" id="msg-input" placeholder="Type a message..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
       <button id="send-btn">Send</button>
     </div>
   </div>
-  <div class="version">11.28.26 V1.06</div>
+  <div class="version">11.28.26 V1.07</div>
 
   <script src="https://cdn.ably.com/lib/ably.min-3.js"></script>
   <script>
@@ -87,9 +78,6 @@
     var myName = "";
     var channel = null;
     var client = null;
-    var photos = [];
-
-    var BAD_WORDS = ["fuck","fucking","fucker","fucked","shit","shitting","shitty","bitch","bitches","bastard","asshole","ass","damn","hell","crap","piss","dick","cock","pussy","whore","slut","retard","nigger","faggot","cunt"];
 
     var nameInput = document.getElementById("display-name");
     var joinBtn = document.getElementById("join-btn");
@@ -99,9 +87,6 @@
     var msgInput = document.getElementById("msg-input");
     var sendBtn = document.getElementById("send-btn");
     var onlineList = document.getElementById("online-list");
-    var photoBtn = document.getElementById("photo-btn");
-    var photoInput = document.getElementById("photo-input");
-    var photoThumbs = document.getElementById("photo-thumbs");
 
     joinBtn.addEventListener("click", joinRoom);
 
@@ -150,12 +135,9 @@
             refreshPresence();
           });
 
-          channel subscribe(function(message) {
+          channel.subscribe(function(message) {
             if (message.name === "chat") {
               showMessage(message.data.name, message.data.text, message.data.name === myName);
-            }
-            if (message.name === "photo") {
-              showPhoto(message.data.name, message.data.image, message.data.name === myName);
             }
           });
         });
@@ -198,26 +180,14 @@
       onlineList.textContent = names.length ? names.join(", ") : "Nobody yet";
     }
 
-    function containsBadWord(text) {
-      var lower = text.toLowerCase();
-      for (var i = 0; i < BAD_WORDS.length; i++) {
-        if (lower.indexOf(BAD_WORDS[i]) !== -1) return true;
-      }
-      return false;
-    }
-
     function sendMessage() {
       var text = msgInput.value.trim();
       if (!text) return;
-      if (containsBadWord(text)) {
-        alert("Please keep it clean in this room. No profanity allowed.");
-        return;
-      }
       if (!channel) {
         addSystemMsg("Not connected to chat server. Message not sent.");
         return;
       }
-      channel.publish("chat", { name: myName, text: text });
+      channel publish("chat", { name: myName, text: text });
       msgInput.value = "";
       msgInput.focus();
     }
@@ -226,52 +196,6 @@
     msgInput.addEventListener("keydown", function(e) {
       if (e.key === "Enter") sendMessage();
     });
-
-    photoBtn.addEventListener("click", function() {
-      photoInput.click();
-    });
-
-    photoInput.addEventListener("change", function() {
-      var files = photoInput.files;
-      for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        if (!file.type.match(/^image\//)) continue;
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          var dataUrl = e.target.result;
-          photos.push(dataUrl);
-          var wrap = document.createElement("div");
-          wrap.className = "thumb-wrap";
-          var img = document.createElement("img");
-          img.src = dataUrl;
-          var rm = document.createElement("button");
-          rm.className = "remove-btn";
-          rm.textContent = "x";
-          rm.onclick = function() {
-            var idx = photos.indexOf(dataUrl);
-            if (idx !== -1) photos.splice(idx, 1);
-            wrap.remove();
-          };
-          wrap.appendChild(img);
-          wrap.appendChild(rm);
-          photoThumbs.appendChild(wrap);
-        };
-        reader.readAsDataURL(file);
-      }
-      photoInput.value = "";
-    });
-
-    function sendPhotos() {
-      if (!channel) {
-        addSystemMsg("Not connected to chat server. Photos not sent.");
-        return;
-      }
-      for (var i = 0; i < photos.length; i++) {
-        channel.publish("photo", { name: myName, image: photos[i] });
-      }
-      photos = [];
-      photoThumbs.innerHTML = "";
-    }
 
     function showMessage(name, text, isMe) {
       var div = document.createElement("div");
@@ -292,28 +216,6 @@
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
-    function showPhoto(name, image, isMe) {
-      var div = document.createElement("div");
-      div.className = "msg " + (isMe ? "me" : "them");
-      var who = document.createElement("div");
-      who.className = "who";
-      who.textContent = name;
-      var img = document.createElement("img");
-      img.src = image;
-      img.style.maxWidth = "100%";
-      img.style.borderRadius = "8px";
-      img.style.marginTop = "4px";
-      var time = document.createElement("div");
-      time.className = "time";
-      var now = new Date();
-      time.textContent = (now.getHours() % 12 || 12) + ":" + (now.getMinutes() < 10 ? "0" : "") + now.getMinutes() + " " + (now.getHours() >= 12 ? "PM" : "AM");
-      div.appendChild(who);
-      div.appendChild(img);
-      div.appendChild(time);
-      messagesDiv.appendChild(div);
-      messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    }
-
     function addSystemMsg(text) {
       var div = document.createElement("div");
       div.className = "system-msg";
@@ -322,7 +224,7 @@
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
-    var APP_VERSION = "11.28.26 V1.06";
+    var APP_VERSION = "11.28.26 V1.07";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
