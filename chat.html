@@ -78,11 +78,11 @@
       <button id="send-btn">Send</button>
     </div>
   </div>
-  <div class="version">11.27.26 V1.02</div>
+  <div class="version">11.27.26 V1.03</div>
 
   <script src="https://cdn.jsdelivr.net/npm/ably@2.30.0/build/ably.min.js"></script>
   <script>
-    var ABLY_KEY = "9Ff5mg.613iFw:A40rQj2x0JZDN7B8DaH5l-zHD06I5fH18262wv1_vOI";
+    var ABLY_KEY = "9Ff5mg.LjwNKQ:M8Sih6ZYqUEajE-tuo66Fsc7wj-ZzA3GKJQtJVMaEcc";
     var CHANNEL_NAME = "bid-day-chat";
     var myName = "";
     var channel = null;
@@ -322,7 +322,7 @@
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
-    var APP_VERSION = "11.27.26 V1.02";
+    var APP_VERSION = "11.27.26 V1.03";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
