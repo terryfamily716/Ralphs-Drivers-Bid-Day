@@ -69,15 +69,27 @@
       <button id="send-btn">Send</button>
     </div>
   </div>
-  <div class="version">11.28.26 V1.07</div>
+  <div class="version">11.28.26 V1.08</div>
 
-  <script src="https://cdn.ably.com/lib/ably.min-3.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
   <script>
-    var ABLY_KEY = "9Ff5mg.HHw9qg:C0gJ--vtqD6IhgYXyjB_Qk3yEyswdWNs51uJuSC0Apc";
-    var CHANNEL_NAME = "bid-day-chat";
+    var firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.database();
+    var chatRef = db.ref("bid-day-chat/messages");
+    var presenceRef = db.ref("bid-day-chat/presence");
     var myName = "";
-    var channel = null;
-    var client = null;
+    var myId = "user-" + Math.random().toString(36).slice(2, 10);
+    var connected = false;
 
     var nameInput = document.getElementById("display-name");
     var joinBtn = document.getElementById("join-btn");
@@ -102,65 +114,33 @@
       msgInput.disabled = false;
       sendBtn.disabled = false;
       msgInput.focus();
-      connectAbly();
+      connectFirebase();
     }
 
-    function connectAbly() {
+    function connectFirebase() {
       try {
-        if (typeof AblyPubSub === "undefined") {
-          addSystemMsg("Could not load chat library. Check your connection and refresh.");
-          return;
-        }
-        client = AblyPubSub.createClient({ key: ABLY_KEY, clientId: myName });
+        var myPresence = presenceRef.child(myId);
+        myPresence.set({ name: myName, joined: firebase.database.ServerValue.TIMESTAMP });
+        myPresence.onDisconnect().remove();
 
-        client.connection.on("connected", function() {
-          addSystemMsg("Connected to chat. Welcome, " + myName + "!");
-          channel = client.channels.get(CHANNEL_NAME);
-
-          channel.presence.enter(function(err) {
-            if (err) {
-              addSystemMsg("Could not join presence: " + err.message);
-            } else {
-              refreshPresence();
-            }
+        presenceRef.on("value", function(snap) {
+          var members = [];
+          snap.forEach(function(child) {
+            members.push(child.val().name || "Anonymous");
           });
-
-          channel.presence.subscribe("enter", function() {
-            refreshPresence();
-          });
-          channel.presence.subscribe("leave", function() {
-            refreshPresence();
-          });
-          channel.presence.subscribe("update", function() {
-            refreshPresence();
-          });
-
-          channel.subscribe(function(message) {
-            if (message.name === "chat") {
-              showMessage(message.data.name, message.data.text, message.data.name === myName);
-            }
-          });
+          updateOnlineList(members);
         });
 
-        client.connection.on("failed", function(stateChange) {
-          var reason = stateChange.reason ? (stateChange.reason.message || stateChange.reason.code) : "unknown";
-          addSystemMsg("Connection failed: " + reason);
+        chatRef.limitToLast(100).on("child_added", function(snap) {
+          var msg = snap.val();
+          showMessage(msg.name, msg.text, msg.name === myName);
         });
 
-        client.connection.on("disconnected", function() {
-          addSystemMsg("Disconnected from chat server. Trying to reconnect...");
-        });
-
+        connected = true;
+        addSystemMsg("Connected to chat. Welcome, " + myName + "!");
       } catch (err) {
         addSystemMsg("Could not connect to chat server: " + (err.message || "Unknown error") + ". You can still type, but messages may not send.");
       }
-    }
-
-    function refreshPresence() {
-      if (!channel) return;
-      channel.presence.get(function(err, members) {
-        if (!err) updateOnlineList(members);
-      });
     }
 
     function updateOnlineList(members) {
@@ -171,7 +151,7 @@
       var names = [];
       var seen = {};
       for (var i = 0; i < members.length; i++) {
-        var id = members[i].clientId || "Anonymous";
+        var id = members[i];
         if (!seen[id]) {
           seen[id] = true;
           names.push(id);
@@ -183,11 +163,11 @@
     function sendMessage() {
       var text = msgInput.value.trim();
       if (!text) return;
-      if (!channel) {
+      if (!connected) {
         addSystemMsg("Not connected to chat server. Message not sent.");
         return;
       }
-      channel publish("chat", { name: myName, text: text });
+      chatRef.push({ name: myName, text: text, time: firebase.database.ServerValue.TIMESTAMP });
       msgInput.value = "";
       msgInput.focus();
     }
@@ -224,7 +204,7 @@
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
-    var APP_VERSION = "11.28.26 V1.07";
+    var APP_VERSION = "11.28.26 V1.08";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
