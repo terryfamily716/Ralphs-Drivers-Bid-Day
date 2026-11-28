@@ -78,7 +78,7 @@
       <button id="send-btn">Send</button>
     </div>
   </div>
-  <div class="version">11.27.26 V1.00</div>
+  <div class="version">11.27.26 V1.01</div>
 
   <script src="https://cdn.ably.com/lib/ably.min-2.js"></script>
   <script>
@@ -121,39 +121,49 @@
     }
 
     function connectAbly() {
-      client = new Ably.Realtime({ key: ABLY_KEY, clientId: myName });
-      channel = client.channels.get(CHANNEL_NAME);
+      try {
+        if (typeof Ably === "undefined") {
+          addSystemMsg("Could not connect to chat server. Check your connection and refresh.");
+          return;
+        }
+        client = new Ably.Realtime({ key: ABLY_KEY, clientId: myName });
+        channel = client.channels.get(CHANNEL_NAME);
 
-      channel.presence.get(function(err, members) {
-        if (!err) updateOnlineList(members);
-      });
-
-      channel.presence.subscribe("enter", function(member) {
-        addSystemMsg(member.clientId + " joined");
         channel.presence.get(function(err, members) {
           if (!err) updateOnlineList(members);
         });
-      });
 
-      channel.presence.subscribe("leave", function(member) {
-        addSystemMsg(member.clientId + " left");
-        channel.presence.get(function(err, members) {
-          if (!err) updateOnlineList(members);
+        channel.presence.subscribe("enter", function(member) {
+          addSystemMsg(member.clientId + " joined");
+          channel.presence.get(function(err, members) {
+            if (!err) updateOnlineList(members);
+          });
         });
-      });
 
-      channel.presence.enter(function(err) {
-        if (err) addSystemMsg("Could not join presence: " + err.message);
-      });
+        channel.presence.subscribe("leave", function(member) {
+          addSystemMsg(member.clientId + " left");
+          channel.presence.get(function(err, members) {
+            if (!err) updateOnlineList(members);
+          });
+        });
 
-      channel subscribe(function(message) {
-        if (message.name === "chat") {
-          showMessage(message.data.name, message.data.text, message.data.name === myName);
-        }
-        if (message.name === "photo") {
-          showPhoto(message.data.name, message.data.image, message.data.name === myName);
-        }
-      });
+        channel.presence.enter(function(err) {
+          if (err) addSystemMsg("Could not join presence: " + err.message);
+        });
+
+        channel.subscribe(function(message) {
+          if (message.name === "chat") {
+            showMessage(message.data.name, message.data.text, message.data.name === myName);
+          }
+          if (message.name === "photo") {
+            showPhoto(message.data.name, message.data.image, message.data.name === myName);
+          }
+        });
+
+        addSystemMsg("Connected to chat. Welcome, " + myName + "!");
+      } catch (err) {
+        addSystemMsg("Could not connect to chat server: " + (err.message || "Unknown error") + ". You can still type, but messages may not send.");
+      }
     }
 
     function updateOnlineList(members) {
@@ -183,7 +193,11 @@
         alert("Please keep it clean in this room. No profanity allowed.");
         return;
       }
-      channel publish("chat", { name: myName, text: text });
+      if (!channel) {
+        addSystemMsg("Not connected to chat server. Message not sent.");
+        return;
+      }
+      channel.publish("chat", { name: myName, text: text });
       msgInput.value = "";
       msgInput.focus();
     }
@@ -228,8 +242,12 @@
     });
 
     function sendPhotos() {
+      if (!channel) {
+        addSystemMsg("Not connected to chat server. Photos not sent.");
+        return;
+      }
       for (var i = 0; i < photos.length; i++) {
-        channel publish("photo", { name: myName, image: photos[i] });
+        channel.publish("photo", { name: myName, image: photos[i] });
       }
       photos = [];
       photoThumbs.innerHTML = "";
@@ -284,14 +302,14 @@
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
-    var APP_VERSION = "11.27.26 V1.00";
+    var APP_VERSION = "11.27.26 V1.01";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
       if (stored !== null) {
         var bust = "?v=" + Date.now();
         if (location.search.indexOf("v=") === -1) {
-          location.replace(location.protocol + "//" + location.host + location.hostname + location.dirname + location.basename + bust);
+          location.replace(location.pathname + bust);
         }
       }
     }
