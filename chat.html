@@ -78,9 +78,9 @@
       <button id="send-btn">Send</button>
     </div>
   </div>
-  <div class="version">11.28.26 V1.05</div>
+  <div class="version">11.28.26 V1.06</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/ably@2.30.0/build/ably.min.js"></script>
+  <script src="https://cdn.ably.com/lib/ably.min-3.js"></script>
   <script>
     var ABLY_KEY = "9Ff5mg.HHw9qg:C0gJ--vtqD6IhgYXyjB_Qk3yEyswdWNs51uJuSC0Apc";
     var CHANNEL_NAME = "bid-day-chat";
@@ -122,11 +122,11 @@
 
     function connectAbly() {
       try {
-        if (typeof Ably === "undefined") {
+        if (typeof AblyPubSub === "undefined") {
           addSystemMsg("Could not load chat library. Check your connection and refresh.");
           return;
         }
-        client = new Ably.Realtime({ key: ABLY_KEY, clientId: myName });
+        client = AblyPubSub.createClient({ key: ABLY_KEY, clientId: myName });
 
         client.connection.on("connected", function() {
           addSystemMsg("Connected to chat. Welcome, " + myName + "!");
@@ -150,7 +150,7 @@
             refreshPresence();
           });
 
-          channel.subscribe(function(message) {
+          channel subscribe(function(message) {
             if (message.name === "chat") {
               showMessage(message.data.name, message.data.text, message.data.name === myName);
             }
@@ -322,7 +322,7 @@
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
-    var APP_VERSION = "11.28.26 V1.05";
+    var APP_VERSION = "11.28.26 V1.06";
     var stored = localStorage.getItem("bidday_version");
     if (stored !== APP_VERSION) {
       localStorage.setItem("bidday_version", APP_VERSION);
